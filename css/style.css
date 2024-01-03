@@ -286,7 +286,32 @@ select {
     gap: 5px;
 }
 
-/*Профиль */
+/*Профиль и пост */
+.line {
+    background-color: #46312C;
+    width: 100%;
+    height: 40px;
+}
+
+.posts, .posts_profile {
+    margin: 0 auto;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 80%;
+}
+
+.posts_profile {
+    width: 90%;
+}
+
+.post {
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.07);
+    backdrop-filter: blur(25px);
+}
 
 .top_post, .text_post {
     display: flex;
@@ -294,7 +319,7 @@ select {
 }
 
 .text_post {
-    gap: 20px;
+    gap: 10px;
 }
 
 .content_text {
@@ -388,5 +413,10 @@ select {
 
 .center_btn {
     margin-top: 40px;
+}
+
+.img_like {
+    margin-left: auto;
+    height: 40px;
 }
 
