@@ -4,3 +4,13 @@
     gap: 40px;
     margin: 0 auto;
 }
+
+link, a {
+    text-decoration: none;
+    color: #28272C;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal; 
+}

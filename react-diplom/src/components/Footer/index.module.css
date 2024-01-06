@@ -1,0 +1,38 @@
+.container {
+    width: 100%;
+    background-color: #46312C;
+    margin-top: 100px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.menu_footer, .left_footer {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.vk {
+    width: 24px;
+    height: 24px;
+    background-image: url(./../../img/vk.svg);
+}
+
+p {
+    color: #CFC7BA;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    line-height: 150%;
+}

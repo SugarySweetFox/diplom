@@ -1,11 +1,14 @@
-import TopMenu from "../TopMenu";
+import Header from "../Header";
+import Footer from "../Footer";
+import MainPage from "../MainPage";
 
 const App=()=>{
    
     return <div>
         
-         <TopMenu />
-         111111
+         <Header/>
+         <MainPage/>
+         <Footer/>
     </div>
 }
 
