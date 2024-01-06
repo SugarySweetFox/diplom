@@ -4,6 +4,7 @@ import ModelsPage from "../ModelsPage";
 import Sign_inPage from "../Sign_inPage";
 import Sign_upPage from "../Sign_upPage";
 import ProfilePage from "../ProfilePage";
+import MainPage from "../MainPage";
 
 
 const TopMenu = () => {
@@ -18,7 +19,7 @@ const TopMenu = () => {
         
         
         <Routes>
-            <Route path="/" Component={() => { return <p></p> }} />
+            <Route path="/" Component={MainPage} />
             <Route path="/models" Component={ModelsPage} />
             <Route path="/sign_in" Component={Sign_inPage} />
             <Route path="/sign_up" Component={Sign_upPage} />
