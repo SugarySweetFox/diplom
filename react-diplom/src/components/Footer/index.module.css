@@ -14,25 +14,20 @@
     margin: 0 auto;
 }
 
-.menu_footer, .left_footer {
+.menu_footer,
+.left_footer {
     display: flex;
     flex-direction: row;
     gap: 20px;
     align-items: center;
 }
 
+.menu_footer>a {
+    color: #CFC7BA;
+}
+
 .vk {
     width: 24px;
     height: 24px;
     background-image: url(./../../img/vk.svg);
-}
-
-p {
-    color: #CFC7BA;
-    font-family: Raleway;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    line-height: 150%;
 }

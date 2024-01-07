@@ -12,3 +12,86 @@ main, body {
 body {
     justify-content: space-between;
 }
+
+a {
+    text-decoration: none;
+    color: #28272C;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+p, button, label {
+    color: #28272C;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    line-height: 150%;
+}
+
+h1 {
+    color: #28272C;
+    font-family: Playfair Display;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+h2 {
+    color: #28272C;
+    font-family: Playfair Display;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+h3 {
+    color: #28272C;
+    font-family: Playfair Display;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    text-align: center;
+}
+
+h4 {
+    color: #28272C;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 150%;
+}
+
+h5 {
+    color: #28272C;
+    font-family: Raleway;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+}
+
+h6, input, ::placeholder, option, select {
+    color: #544F4C;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;   
+}
+
+button {
+    background: #845946;
+    width: 250px;
+    height: 55px;
+    border: none;
+    color: #CFC7BA;
+}

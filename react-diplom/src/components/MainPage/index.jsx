@@ -1,4 +1,5 @@
 import  classes from "./index.module.css";
+import pic_index_img from "../../img/pic_index.png"
 
 const MainPage=()=>{
    
@@ -7,7 +8,7 @@ const MainPage=()=>{
             <div className={classes.left_index}>
                 <div className={classes.top_left_index}>
                     <h1>Воплотим все ваши идеи в жизнь</h1>
-                    <p>Что бы реализовать свои идеи в полном масштабе, вам нужно просто зарегистрироваться</p>
+                    <p className={classes.grey}>Что бы реализовать свои идеи в полном масштабе, вам нужно просто зарегистрироваться</p>
                 </div>
                 <div className={classes.bottom_left_index}>
                     <a href=""><button>Регистрация</button></a>
@@ -15,7 +16,7 @@ const MainPage=()=>{
                 </div>
             </div>
             <div className={classes.right_index}>
-                <div className={classes.pic_index_img}></div> 
+                <img src={pic_index_img} alt="" className={classes.pic_index_img} /> 
             </div> 
         </div>
     

@@ -1,13 +1,15 @@
 import Header from "../Header";
 import Footer from "../Footer";
+import Routes from "../Routes";
 
 
-const App=()=>{
-   
+const App = () => {
+
     return <div>
-        
-         <Header/>
-         <Footer/>
+        <Header />
+        <Routes />
+        <Footer />
+       
     </div>
 }
 
