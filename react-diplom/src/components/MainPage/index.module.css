@@ -38,12 +38,6 @@
     margin-top: 40px;
 }
 
-.bottom_left_index {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
 .iti {
     display: flex;
     flex-direction: column;
@@ -64,16 +58,6 @@
     margin: 0 auto;
     gap: 40px;
     margin-bottom: 100px;
-}
-
-
-
-.border_btn {
-    width: 250px;
-    height: 55px;
-    border: 2px solid #845946;
-    background: none;
-    color: #28272C;
 }
 
 .grey {

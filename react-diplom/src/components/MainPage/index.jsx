@@ -1,5 +1,6 @@
 import  classes from "./index.module.css";
 import pic_index_img from "../../img/pic_index.png"
+import ButtonMain from "../ButtonMain";
 
 const MainPage=()=>{
    
@@ -10,10 +11,7 @@ const MainPage=()=>{
                     <h1>Воплотим все ваши идеи в жизнь</h1>
                     <p className={classes.grey}>Что бы реализовать свои идеи в полном масштабе, вам нужно просто зарегистрироваться</p>
                 </div>
-                <div className={classes.bottom_left_index}>
-                    <a href=""><button>Регистрация</button></a>
-                    <a href=""><button className={classes.border_btn}>Вход</button></a>
-                </div>
+                <ButtonMain />
             </div>
             <div className={classes.right_index}>
                 <img src={pic_index_img} alt="" className={classes.pic_index_img} /> 

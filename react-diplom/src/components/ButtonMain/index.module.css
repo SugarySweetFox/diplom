@@ -1,0 +1,13 @@
+.bottom_left_index {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.border_btn {
+    width: 250px;
+    height: 55px;
+    border: 2px solid #845946;
+    background: none;
+    color: #28272C;
+}
