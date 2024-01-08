@@ -13,7 +13,7 @@ const Footer=()=>{
             }
             </div>
             <div className={classes.left_footer}>
-                    <p>implement.the.idea@gmail.com</p>
+                    <p className={classes.white}>implement.the.idea@gmail.com</p>
                     <div className={classes.vk}></div>
             </div>
         </div>
