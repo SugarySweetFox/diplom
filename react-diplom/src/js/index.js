@@ -1,7 +1,7 @@
 import express from 'express'
-const Sequelize = require("sequelize");
+import Sequelize from 'sequelize'
 const app = express()
-const PORT = 3000;
+const PORT = 5000;
 
 const sequelize = new Sequelize("diplom", "root", "", {
     dialect: 'mysql',
@@ -22,7 +22,11 @@ app.post('/', (req, res) => {
 
 async function startApp() {
     try {
-      
+        sequelize.sync().then(()=>{
+            app.listen(3000, function(){
+              console.log("Сервер ожидает подключения...");
+            });
+          }).catch(err=>console.log(err));
         app.listen(PORT, () => console.log('server started' + PORT))
     } catch (e) {
         console.log(e)
