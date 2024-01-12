@@ -28,4 +28,4 @@ const Post = sequelize.define("posts", {
     }
 });
 
-export default { Post }
+export default Post

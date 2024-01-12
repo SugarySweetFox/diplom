@@ -1,26 +1,12 @@
 import express from 'express'
-import Sequelize from 'sequelize'
-import Post from './post.js'
+import router from './router.js';
 import {sequelize} from './db.js'
 const app = express()
 const PORT = 5000;
 
-// const sequelize = new Sequelize("diplom", "root", "", {
-//     dialect: 'mysql',
-//     host: 'localhost',
-//     define: {
-//         timestamps: false
-//     }
-// });
-
-
 app.use(express.json())
+app.use('/api', router)
 
-app.post('/', (req, res) => {
-    const {id, author, title, content, picture} = req.body
-    const post = Post.create({id, author, title, content, picture})
-    res.json(post)
-})
 
 async function startApp() {
     try {
