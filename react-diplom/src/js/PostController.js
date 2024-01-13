@@ -1,10 +1,10 @@
 import Post from './Post.js'
+import PostService from './PostService.js'
 
 class PostController {
     async create(req, res) {
         try {
-            const {author, title, content, picture} = req.body
-            const post = await Post.create({author, title, content, picture})
+            const post = await PostService.create(req.body, req.files.picture)
             res.json(post)
         } catch (e) {
             res.status(500).json(e)
@@ -13,7 +13,7 @@ class PostController {
 
     async getAll(req, res) {
         try {
-            const posts = await Post.findAll();
+            const posts = await PostService.getAll();
             return res.json(posts);
         } catch (e) {
             res.status(500).json(e)
@@ -22,12 +22,7 @@ class PostController {
 
     async getOne(req, res) {
         try {
-            const {id} = req.params
-            if (!id) {
-                res.status(400).json({message: 'Id не указан'})
-                return
-            }
-            const post = await Post.findByPk(id);
+            const post = await PostService.getOne(req.params.id);
             return res.json(post);
         } catch (e) {
             res.status(500).send(e.toString())
@@ -36,16 +31,8 @@ class PostController {
 
     async update(req, res) {
         try {
-            const post = req.body
-            if (!post.id) {
-                res.status(400).json({message: 'Id не указан'})
-                return
-            }
-            const updatedPost = await Post.update({author: post.author, title: post.title, content: post.content, picture: post.picture}, {
-                where: {
-                    id: post.id,
-                }
-            })
+            const updatedPost = await PostService.update(req.body)
+            console.log(updatedPost);
             return res.json(updatedPost);
         } catch (e) {
             res.status(500).send(e.toString())
@@ -54,16 +41,7 @@ class PostController {
 
     async delete(req, res) {
         try {
-            const {id} = req.params
-            if (!id) {
-                res.status(400).json({message: 'Id не указан'})
-                return
-            }
-            const post = await Post.destroy({
-                where: {
-                    id: post.id
-                }
-            })
+            const post = await PostService.delete(req.params.id)
             return res.json(post)
         } catch (e) {
             res.status(500).send(e.toString())

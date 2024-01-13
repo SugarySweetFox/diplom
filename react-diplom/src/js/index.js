@@ -1,10 +1,14 @@
-import express from 'express'
+import express from 'express';
 import router from './router.js';
-import {sequelize} from './db.js'
+import {sequelize} from './db.js';
+import fileUpload from 'express-fileupload';
+
 const app = express()
 const PORT = 5000;
 
 app.use(express.json())
+app.use(express.static('static'))
+app.use(fileUpload({}))
 app.use('/api', router)
 
 
