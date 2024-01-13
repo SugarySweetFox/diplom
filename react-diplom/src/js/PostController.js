@@ -22,25 +22,51 @@ class PostController {
 
     async getOne(req, res) {
         try {
-            
+            const {id} = req.params
+            if (!id) {
+                res.status(400).json({message: 'Id не указан'})
+                return
+            }
+            const post = await Post.findByPk(id);
+            return res.json(post);
         } catch (e) {
-            res.status(500).json(e)
+            res.status(500).send(e.toString())
         }
     }
 
     async update(req, res) {
         try {
-            
+            const post = req.body
+            if (!post.id) {
+                res.status(400).json({message: 'Id не указан'})
+                return
+            }
+            const updatedPost = await Post.update({author: post.author, title: post.title, content: post.content, picture: post.picture}, {
+                where: {
+                    id: post.id,
+                }
+            })
+            return res.json(updatedPost);
         } catch (e) {
-            res.status(500).json(e)
+            res.status(500).send(e.toString())
         }
     }
 
     async delete(req, res) {
         try {
-            
+            const {id} = req.params
+            if (!id) {
+                res.status(400).json({message: 'Id не указан'})
+                return
+            }
+            const post = await Post.destroy({
+                where: {
+                    id: post.id
+                }
+            })
+            return res.json(post)
         } catch (e) {
-            res.status(500).json(e)
+            res.status(500).send(e.toString())
         }
     }
 }
