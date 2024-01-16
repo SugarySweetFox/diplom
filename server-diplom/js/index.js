@@ -2,6 +2,7 @@ import express from 'express';
 import router from './router.js';
 import {sequelize} from './db.js';
 import fileUpload from 'express-fileupload';
+import multer from 'multer';
 
 const app = express()
 const PORT = 5000;
@@ -10,6 +11,7 @@ app.use(express.json())
 app.use(express.static('static'))
 app.use(fileUpload({}))
 app.use('/api', router)
+app.use(multer({dest:"uploads"}).single("filedata"))
 
 
 async function startApp() {
