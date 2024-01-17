@@ -23,7 +23,7 @@ const Post = sequelize.define("post", {
     }
 });
 
-const Users = sequelize.define("users", {
+const User = sequelize.define("user", {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -51,16 +51,16 @@ const Users = sequelize.define("users", {
         allowNulll: false
     }
 });
-Users.hasMany(Post);
+User.hasMany(Post);
 
-const Works = sequelize.define("works", {
+const Work = sequelize.define("work", {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
         allowNulll: false
     },
-    work: {
+    picture: {
         type: Sequelize.STRING,
         allowNulll: false
     }
@@ -92,7 +92,7 @@ const Role = sequelize.define("role", {
         allowNulll: false
     }
 });
-Role.hasMany(Users);
+Role.hasMany(User);
 
 const Gender = sequelize.define("gender", {
     id: {
@@ -106,7 +106,7 @@ const Gender = sequelize.define("gender", {
         allowNulll: false
     }
 });
-Gender.hasMany(Users);
+Gender.hasMany(User);
 
 const City = sequelize.define("city", {
     id: {
@@ -120,7 +120,7 @@ const City = sequelize.define("city", {
         allowNulll: false
     }
 });
-City.hasMany(Users);
+City.hasMany(User);
 City.hasMany(Post);
 
 const Activities = sequelize.define("activities", {
@@ -135,10 +135,10 @@ const Activities = sequelize.define("activities", {
         allowNulll: false
     }
 });
-Activities.hasMany(Users);
+Activities.hasMany(User);
 Activities.hasMany(Post);
 
-const Likes = sequelize.define("likes", {
+const Like = sequelize.define("like", {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -146,8 +146,8 @@ const Likes = sequelize.define("likes", {
         allowNulll: false
     }
 });
-Users.belongsToMany(Post, {through: Likes});
-Post.belongsToMany(Users, {through: Likes});
+User.belongsToMany(Post, {through: Like});
+Post.belongsToMany(User, {through: Like});
 
 const Portfolio = sequelize.define("portfolio", {
     id: {
@@ -157,7 +157,7 @@ const Portfolio = sequelize.define("portfolio", {
         allowNulll: false
     }
 });
-Users.belongsToMany(Works, {through: Portfolio});
-Works.belongsToMany(Users, {through: Portfolio});
+User.belongsToMany(Work, {through: Portfolio});
+Work.belongsToMany(User, {through: Portfolio});
 
-export default { Post, Users }
+export default { Post, User, Work, Role, Like, Gender, City, Activities, Portfolio, Type }
