@@ -28,7 +28,7 @@ class PostService {
             res.status(400).json({message: 'Id не указан'})
             return
         }
-        const updatedPost = await Post.update({author: post.author, title: post.title, content: post.content, picture: post.picture}, {
+        const updatedPost = await Post.update({about_me: post.about_me, kol_vo: post.kol_vo, picture: post.picture}, {
             where: {
                 id: post.id,
             }

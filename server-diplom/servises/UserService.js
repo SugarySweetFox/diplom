@@ -27,7 +27,7 @@ class UserService {
             res.status(400).json({message: 'Id не указан'})
             return
         }
-        const updatedUser = await User.update({author: user.author, title: user.title, content: user.content, picture: user.picture}, {
+        const updatedUser = await User.update({name: user.name, login: user.login, password: user.password, birthday: user.birthday, photo: user.photo}, {
             where: {
                 id: user.id,
             }

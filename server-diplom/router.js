@@ -8,6 +8,7 @@ import LikeController from './controllers/LikeController.js'
 import GenderController from './controllers/GenderController.js'
 import CityController from './controllers/CityController.js'
 import ActivitiesController from './controllers/ActivitiesController.js'
+import PortfolioController from './controllers/PortfolioController.js'
 
 const router = new Router()
 
@@ -54,5 +55,11 @@ router.get('/cities/:id', CityController.getOne)
 // ACTIVITIES
 router.get('/activities', ActivitiesController.getAll)
 router.get('/activities/:id', ActivitiesController.getOne)
+
+// PORTFOLIO
+router.post('/portfolio', PortfolioController.create)
+router.get('/portfolio', PortfolioController.getAll)
+router.put('/portfolio', PortfolioController.update)
+router.delete('/portfolio/:id', PortfolioController.delete)
 
 export default router;
