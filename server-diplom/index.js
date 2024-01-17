@@ -5,7 +5,7 @@ import fileUpload from 'express-fileupload';
 
 
 const app = express()
-const PORT = 5000;
+const PORT = 3001;
 
 app.use(express.json())
 app.use(express.static('static'))
@@ -16,11 +16,11 @@ app.use('/api', router)
 async function startApp() {
     try {
         sequelize.sync().then(()=>{
-            app.listen(3000, function(){
+            app.listen(PORT, function(){
               console.log("Сервер ожидает подключения...");
             });
           }).catch(err=>console.log(err));
-        app.listen(PORT, () => console.log('server started' + PORT))
+          
     } catch (e) {
         console.log(e)
     }

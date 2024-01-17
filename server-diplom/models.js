@@ -3,7 +3,7 @@ import Sequelize from 'sequelize'
 import {sequelize} from './db.js'
 const app = express()
 
-const Post = sequelize.define("posts", {
+const Post = sequelize.define("post", {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
