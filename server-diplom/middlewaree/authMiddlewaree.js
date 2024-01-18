@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import secret from '../config.js'
 
-const middleWaree = function(req, res, next) {
+const authMiddlewaree = function(req, res, next) {
     if (req.methood === 'options') {
         next()
     }
@@ -21,4 +21,4 @@ const middleWaree = function(req, res, next) {
     }
 }
 
-export default middleWaree;
+export default authMiddlewaree;
