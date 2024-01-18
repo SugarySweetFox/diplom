@@ -54,7 +54,7 @@ class authController {
                 return res.status(400).json({message: 'Неверный пароль'})
             }
             const token = generateAccessToken(user.id, user.login);
-            
+
             return res.json({token})
         } catch (e) {
             console.log(e);
@@ -64,13 +64,10 @@ class authController {
 
     async getUsers(req, res) {
         try {
-            const userRole = new Role()
-            const adminRole = new Role({name: 'admin'})
-            await userRole.save()
-            await adminRole.save()
-            res.json('server work')
+            const users = await User.findAll()
+            res.json(users)
         } catch (e) {
-            
+            console.log(e);
         }
     }
 }
