@@ -3,10 +3,11 @@ import PortfolioService from '../servises/PortfolioService.js'
 class PortfolioController {
     async create(req, res) {
         try {
-            const portfolio = await PortfolioService.create(req.body, req.files.picture)
+            const portfolio = await PortfolioService.create()
             res.json(portfolio)
 
         } catch (e) {
+            console.log(e);
             res.status(500).json(e)
         }
     }

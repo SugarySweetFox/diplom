@@ -1,4 +1,4 @@
-import Work from "../models.js";
+import { Work } from "../models.js";
 import fileServise from "./fileServise.js";
 
 class WorkService {

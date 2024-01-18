@@ -1,4 +1,4 @@
-import Gender from "../models.js";
+import { Gender } from "../models.js";
 
 class GenderService {
 

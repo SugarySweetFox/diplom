@@ -23,6 +23,39 @@ const Post = sequelize.define("post", {
     }
 });
 
+const Work = sequelize.define("work", {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNulll: false
+    },
+    picture: {
+        type: Sequelize.STRING,
+        allowNulll: false
+    }
+});
+
+const PortfolioUser = sequelize.define("portfolioUser", {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNulll: false
+    }
+});
+
+const Portfolio = sequelize.define("portfolio", {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNulll: false
+    }
+});
+Portfolio.hasMany(Work);
+Portfolio.hasMany(PortfolioUser);
+
 const User = sequelize.define("user", {
     id: {
         type: Sequelize.INTEGER,
@@ -52,19 +85,7 @@ const User = sequelize.define("user", {
     }
 });
 User.hasMany(Post);
-
-const Work = sequelize.define("work", {
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-        allowNulll: false
-    },
-    picture: {
-        type: Sequelize.STRING,
-        allowNulll: false
-    }
-});
+User.hasMany(PortfolioUser);
 
 const Type = sequelize.define("type", {
     id: {
@@ -149,15 +170,6 @@ const Like = sequelize.define("like", {
 User.belongsToMany(Post, {through: Like});
 Post.belongsToMany(User, {through: Like});
 
-const Portfolio = sequelize.define("portfolio", {
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-        allowNulll: false
-    }
-});
-User.belongsToMany(Work, {through: Portfolio});
-Work.belongsToMany(User, {through: Portfolio});
 
-export default { Post, User, Work, Role, Like, Gender, City, Activities, Portfolio, Type }
+
+export  { Post, User, Work, Role, Like, Gender, City, Activities, Portfolio, Type }

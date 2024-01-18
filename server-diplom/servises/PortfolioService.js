@@ -1,12 +1,17 @@
-import Portfolio from "../models.js";
-import fileServise from "./fileServise.js";
+import { Portfolio } from "../models.js";
 
 class PortfolioService {
-    async create(portfolio, picture) {
-        const fileName = await fileServise.saveFile(picture);
-        const cteatedPortfolio = await Portfolio.create({...portfolio, picture: fileName})
+    async create() {
+        try{
+            const cteatedPortfolio = await Portfolio.create();
+            return cteatedPortfolio;
+        }
+        catch(e){
+            console.log('error: ', e)
+            return e;
+        }
         
-        return cteatedPortfolio;
+        
     }
 
     async getAll() {

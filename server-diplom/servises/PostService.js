@@ -1,5 +1,5 @@
 // import Post from "../models.js";
-import Post from "../models.js";
+import { Post } from "../models.js";
 import fileServise from "./fileServise.js";
 
 class PostService {

@@ -1,10 +1,10 @@
-import User from "../models.js";
+import { User } from "../models.js";
 import fileServise from "./fileServise.js";
 
 class UserService {
     async create(user, picture) {
         const fileName = await fileServise.saveFile(picture);
-        const cteatedUser = await User.create({...user, picture: fileName})
+        const cteatedUser = await User.create({...user, photo: fileName})
         
         return cteatedUser;
     }

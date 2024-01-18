@@ -1,4 +1,4 @@
-import Like from "../models.js";
+import { Like } from "../models.js";
 
 
 class LikeService {

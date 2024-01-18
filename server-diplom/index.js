@@ -2,6 +2,7 @@ import express from 'express';
 import router from './router.js';
 import {sequelize} from './db.js';
 import fileUpload from 'express-fileupload';
+import authRouter from './authRouter.js'
 
 
 const app = express()
@@ -11,6 +12,7 @@ app.use(express.json())
 app.use(express.static('static'))
 app.use(fileUpload({}))
 app.use('/api', router)
+app.use('/auth', authRouter)
 
 
 async function startApp() {

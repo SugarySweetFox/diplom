@@ -1,4 +1,4 @@
-import Activities from "../models.js";
+import { Activities } from "../models.js";
 
 class ActivitiesService {
 

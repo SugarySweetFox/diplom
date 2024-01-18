@@ -1,9 +1,14 @@
-import Type from "../models.js";
+import { Type } from "../models.js";
 
 class TypeService {
     async getAll() {
-        const types = await Type.findAll();
-        return types;
+       try{ 
+            let types =  Type.findAll();
+            return types;
+        }
+       catch(e){
+        console.log('error->', e);
+       }
     }
 
     async getOne(id) {

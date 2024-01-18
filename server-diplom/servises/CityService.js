@@ -1,4 +1,4 @@
-import City from "../models.js";
+import { City } from "../models.js";
 
 class CityService {
 
