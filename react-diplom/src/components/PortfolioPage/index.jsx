@@ -27,10 +27,10 @@ const PortfolioPage=()=>{
     ]);
 
     useEffect(() => {
-        // axios.get('http://127.0.0.1:3001/api/users/1').then((data) => {
-        //     console.log(data.data)
-        //     setUser(data.data);
-        // })
+        axios.get('http://127.0.0.1:3001/api/works').then((data) => {
+            console.log(data.data)
+            setWorks(data.data);
+        })
     }, []);
 
 
@@ -51,7 +51,7 @@ const PortfolioPage=()=>{
                                     if (work.favorite)
                                     return <div className={classes.photo}>
                                     <div className={classes.div_okr}></div>
-                                    <img className={classes.img} src={work.picture} alt="" />
+                                    <img className={classes.img} src={"http://localhost:3001/" + work.picture} alt="" />
                                     <div className={classes.div_border}></div>
                                     </div>
                                 })
@@ -61,7 +61,7 @@ const PortfolioPage=()=>{
                             <button className={classes.add_work}><h1 className={classes.white}>+</h1></button>
                             {
                                 works.map((work)=>{
-                                    return <div className={classes.work}><img src={work.picture} alt="" /></div>
+                                    return <div className={classes.work}><img className={classes.work} src={"http://localhost:3001/" + work.picture} alt="" /></div>
                                 })
                             }
                         </div>

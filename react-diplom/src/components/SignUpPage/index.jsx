@@ -1,6 +1,23 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import  classes from "./index.module.css";
 
 const SignUpPage=()=>{
+
+    const [city, setCity] = useState([
+        {
+            name: "Moskoy",
+        }
+    ]);
+
+    useEffect(() => {
+        axios.get('http://127.0.0.1:3001/api/cities').then((data) => {
+            console.log(data.data)
+            setCity(data.data);
+        })
+    }, []);
+
+
     return <div className={classes.block_brown}>
         <h3>Вход</h3>
 
@@ -20,7 +37,11 @@ const SignUpPage=()=>{
                 <div className={classes.input}>
                     <p>Город</p>
                     <select name="" id="">
-                        <option value="">Москва</option>
+                        {
+                            city.map((city=>{
+                                return <option value={city.id}>{city.name}</option>
+                            }))
+                        }
                     </select>
                 </div>
                 <div className={classes.input}>

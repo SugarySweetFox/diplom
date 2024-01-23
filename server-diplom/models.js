@@ -15,14 +15,19 @@ const Work = sequelize.define("work", {
         type: Sequelize.STRING,
         allowNull: false
     },
-    portfolio_id: {
-        type: Sequelize.INTEGER,
-        allowNull: true
-    },
+    // portfolio_id: {
+    //     type: Sequelize.INTEGER,
+    //     allowNull: true
+    // },
     favorite: {
         type: Sequelize.BOOLEAN,
         allowNull: true
+    },
+    user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
     }
+
 });
 
 
@@ -36,14 +41,14 @@ const Work = sequelize.define("work", {
 //     }
 // });
 
-const Portfolio = sequelize.define("portfolio", {
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-        allowNulll: false
-    }
-});
+// const Portfolio = sequelize.define("portfolio", {
+//     id: {
+//         type: Sequelize.INTEGER,
+//         autoIncrement: true,
+//         primaryKey: true,
+//         allowNulll: false
+//     }
+// });
 // Portfolio.hasMany(Work);
 // Portfolio.hasMany(PortfolioUser);
 
@@ -310,6 +315,14 @@ Like.belongsTo(Post, {
 
 
 
+// Work
+
+Work.belongsTo(User, {
+    foreignKey: 'user_id',
+    targetKey: 'id'
+});
 
 
-export  { Post, User, Work, Role, Like, Gender, City, Activities, Type, Portfolio, Search }
+
+
+export  { Post, User, Work, Role, Like, Gender, City, Activities, Type, Search }
