@@ -10,7 +10,7 @@ class UserService {
     }
 
     async getAll() {
-        const users = await User.findAll();
+        const users = await User.findAll({ include: { all: true } });
         return users;
     }
 

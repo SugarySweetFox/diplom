@@ -13,7 +13,7 @@ const roleMiddlewaree = function(roleId) {
             if (!token) {
                 return res.status(403).json({message: 'Пользователь не авторизирован'})
             }
-            const {roleId: userRoles} = jwt.verify(token, secret)
+            const {roleId: userRoles} = jwt.verify(token, secret.secret)
             let hasRole = false
             userRoles.array.forEach(role => {
                 if(roleId.includes(role)) {

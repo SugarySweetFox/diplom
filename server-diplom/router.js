@@ -56,7 +56,7 @@ router.get('/cities/:id', CityController.getOne)
 router.get('/activities', ActivitiesController.getAll)
 router.get('/activities/:id', ActivitiesController.getOne)
 
-// PORTFOLIO
+// // PORTFOLIO
 router.post('/portfolio', PortfolioController.create)
 router.get('/portfolio', PortfolioController.getAll)
 router.put('/portfolio', PortfolioController.update)

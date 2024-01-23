@@ -7,12 +7,14 @@ const authMiddlewaree = function(req, res, next) {
     }
 
     try {
+        console.log('secret->', secret);
         const token = req.headers.authorization.split(' ')[1]
         console.log('token ------------>', token)
         if (!token) {
             return res.status(403).json({message: 'Пользователь не авторизирован'})
         }
-        const decodedDate = jwt.verify(token, secret)
+        const decodedDate = jwt.verify(token, secret.secret)
+        console.log('decodedDate->', decodedDate);
         req.user = decodedDate
         next()
     } catch (e) {

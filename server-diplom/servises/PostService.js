@@ -1,5 +1,5 @@
-// import Post from "../models.js";
-import { Post } from "../models.js";
+
+import { Post, User, City, Type } from "../models.js";
 import fileServise from "./fileServise.js";
 
 class PostService {
@@ -11,7 +11,7 @@ class PostService {
     }
 
     async getAll() {
-        const posts = await Post.findAll();
+        const posts = await Post.findAll({ include: { all: true } });
         return posts;
     }
 
