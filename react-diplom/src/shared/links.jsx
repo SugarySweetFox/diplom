@@ -3,6 +3,7 @@ import ModelsPage from "../components/ModelsPage";
 import SignInPage from "../components/SignInPage";
 import SignUpPage from "../components/SignUpPage";
 import ProfilePage from "../components/ProfilePage";
+import PhotografPage from "../components/PhotografsPage";
 
 const links = [{
     url: "/",
@@ -13,6 +14,11 @@ const links = [{
     url: "/models",
     name: "Модели",
     component: ModelsPage
+},
+{
+    url: "/Photograf",
+    name: "Фотографы",
+    component: PhotografPage
 },
 {
     url: "/sign_in",
@@ -29,6 +35,7 @@ const links = [{
     name: "Профиль",
     component: ProfilePage
 }
+
 ]
 
 

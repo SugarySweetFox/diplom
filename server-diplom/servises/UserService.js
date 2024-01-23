@@ -18,7 +18,7 @@ class UserService {
         if (!id) {
             throw new Error('Id не указан')
         }
-        const user = await User.findByPk(id);
+        const user = await User.findByPk(id, { include: { all: true } });
         return user;
     }
 

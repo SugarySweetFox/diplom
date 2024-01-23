@@ -18,6 +18,10 @@ const Work = sequelize.define("work", {
     portfolio_id: {
         type: Sequelize.INTEGER,
         allowNull: true
+    },
+    favorite: {
+        type: Sequelize.BOOLEAN,
+        allowNull: true
     }
 });
 
@@ -64,7 +68,7 @@ const User = sequelize.define("user", {
     },
     birthday: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: true
     },
     photo: {
         type: Sequelize.STRING,
@@ -159,6 +163,19 @@ const Activities = sequelize.define("activities", {
         allowNull: false
     }
 });
+
+const Search = sequelize.define("search", {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false
+    },
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
+});
 // Activities.hasMany(User);
 // Activities.hasMany(Post);
 
@@ -168,6 +185,14 @@ const Like = sequelize.define("like", {
         autoIncrement: true,
         primaryKey: true,
         allowNull: false
+    },
+    post_id: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+    },
+    user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: true
     }
 });
 // User.belongsToMany(Post, {through: Like});
@@ -188,17 +213,9 @@ const Post = sequelize.define("post", {
         type: Sequelize.STRING,
         allowNull: false
     }, 
-    desc: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
     about_me: {
         type: Sequelize.STRING,
         allowNulll: false
-    },
-    count: {
-        type: Sequelize.INTEGER,
-        allowNulll: true
     },
     picture: {
         type: Sequelize.STRING,
@@ -217,6 +234,10 @@ const Post = sequelize.define("post", {
         allowNull: false
     },
     activities_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    search_id: {
         type: Sequelize.INTEGER,
         allowNull: false
     }
@@ -269,9 +290,26 @@ Post.belongsTo(Type, {
     foreignKey: 'type_id',
     targetKey: 'id'
 });
+Post.belongsTo(Search, {
+    foreignKey: 'search_id',
+    targetKey: 'id'
+});
+
+
+
+// Likes
+
+Like.belongsTo(User, {
+    foreignKey: 'user_id',
+    targetKey: 'id'
+});
+Like.belongsTo(Post, {
+    foreignKey: 'post_id',
+    targetKey: 'id'
+});
 
 
 
 
 
-export  { Post, User, Work, Role, Like, Gender, City, Activities, Type, Portfolio }
+export  { Post, User, Work, Role, Like, Gender, City, Activities, Type, Portfolio, Search }

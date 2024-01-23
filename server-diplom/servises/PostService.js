@@ -15,6 +15,24 @@ class PostService {
         return posts;
     }
 
+    async getAllModels() {
+        const posts = await Post.findAll({ include: { all: true }, where: {
+
+            activities_id: 1
+
+        } });
+        return posts;
+    }
+
+    async getAllPhotografs() {
+        const posts = await Post.findAll({ include: { all: true }, where: {
+
+            activities_id: 2
+
+        } });
+        return posts;
+    }
+
     async getOne(id) {
         if (!id) {
             throw new Error('Id не указан')

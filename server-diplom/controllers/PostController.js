@@ -20,6 +20,24 @@ class PostController {
         }
     }
 
+    async getAllModels(req, res) {
+        try {
+            const posts = await PostService.getAllModels();
+            return res.json(posts);
+        } catch (e) {
+            res.status(500).json(e)
+        }
+    }
+
+    async getAllPhotografs(req, res) {
+        try {
+            const posts = await PostService.getAllPhotografs();
+            return res.json(posts);
+        } catch (e) {
+            res.status(500).json(e)
+        }
+    }
+
     async getOne(req, res) {
         try {
             const post = await PostService.getOne(req.params.id);

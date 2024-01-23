@@ -4,10 +4,11 @@ import {sequelize} from './db.js';
 import fileUpload from 'express-fileupload';
 import authRouter from './authRouter.js'
 import createInfo from './utils/create.js';
+import cors from "cors";
 
 const app = express()
 const PORT = 3001;
-
+app.use(cors());
 app.use(express.json())
 app.use(express.static('static'))
 app.use(fileUpload({}))
@@ -17,8 +18,8 @@ app.use('/auth', authRouter)
 
 async function startApp() {
     try {
-        sequelize.sync().then(()=>{
-          // createInfo();
+        sequelize.sync({force: true}).then(()=>{
+          createInfo();
 
          
 

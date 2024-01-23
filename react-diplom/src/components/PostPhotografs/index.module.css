@@ -1,23 +1,20 @@
-.center {
-    margin: auto;
-    margin-top: 20px;
+.border_btn {
+    width: 250px;
+    height: 55px;
+    border: 2px solid #845946;
+    background: none;
+    color: #28272C;
 }
 
 .left {
     text-align: left;
 }
 
-.posts, .posts_profile {
-    margin: 0 auto;
-    margin-top: 60px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    width: 80%;
-}
-
-.posts_profile {
-    width: 90%;
+.post {
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.07);
+    backdrop-filter: blur(25px);
 }
 
 .top_post, .text_post {
@@ -71,25 +68,6 @@
     margin-top: 40px;
 }
 
-.profile {
-    width: 80%;
-    margin: 0 auto;
-}
-
-.profile_div {
-    background: rgba(132, 89, 70, 0.24);
-    box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.07);
-    backdrop-filter: blur(25px);
-    margin: 0 auto;
-    padding: 100px;
-    padding: 40px;
-}
-
-.profile_top {
-    display: flex;
-    flex-direction: row;
-}
-
 .div_first_btn {
     background: rgba(132, 89, 70, 0.24);
     backdrop-filter: blur(25px);
@@ -106,20 +84,20 @@
     height: 50px;
     background: none;
     color: #28272C;
-    border-bottom: none;
 }
 
-.center {
+.center, .center_btn {
     text-align: center;
     margin: 0 auto;
 }
 
-.border_btn {
-    width: 250px;
-    height: 55px;
-    border: 2px solid #845946;
-    background: none;
-    color: #28272C;
+.center_btn {
+    margin-top: 40px;
+}
+
+.img_like {
+    margin-left: auto;
+    height: 40px;
 }
 
 .filled_btn {
