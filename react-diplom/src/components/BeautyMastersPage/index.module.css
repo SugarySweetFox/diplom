@@ -1,0 +1,23 @@
+.line {
+    background-color: #46312C;
+    width: 100%;
+    height: 40px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 80%;
+}
+
+.filled_btn {
+    background: #845946;
+    width: 250px;
+    height: 55px;
+    border: none;
+    color: #CFC7BA;
+}

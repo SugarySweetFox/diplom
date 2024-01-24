@@ -1,5 +1,5 @@
 
-import { Post, User, City, Type } from "../models.js";
+import { Post, User, City, Type, Service } from "../models.js";
 import fileServise from "./fileServise.js";
 
 class PostService {
@@ -33,6 +33,15 @@ class PostService {
         return posts;
     }
 
+    async getAllBeautyMasters() {
+        const posts = await Post.findAll({ include: { all: true }, where: {
+
+            activities_id: 3
+
+        } });
+        return posts;
+    }
+    
     async getOne(id) {
         if (!id) {
             throw new Error('Id не указан')
@@ -46,7 +55,7 @@ class PostService {
             res.status(400).json({message: 'Id не указан'})
             return
         }
-        const updatedPost = await Post.update({about_me: post.about_me, kol_vo: post.kol_vo, picture: post.picture}, {
+        const updatedPost = await Post.update({about_me: post.about_me, picture: post.picture}, {
             where: {
                 id: post.id,
             }

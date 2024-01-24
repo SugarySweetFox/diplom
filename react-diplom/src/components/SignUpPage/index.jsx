@@ -10,10 +10,36 @@ const SignUpPage=()=>{
         }
     ]);
 
+    const [activity, setActivity] = useState([
+        {
+            name: "model",
+        }
+    ]);
+
+    const [gender, setGender] = useState([
+        {
+            name: "woman",
+        }
+    ]);
+
     useEffect(() => {
         axios.get('http://127.0.0.1:3001/api/cities').then((data) => {
             console.log(data.data)
             setCity(data.data);
+        })
+    }, []);
+
+    useEffect(() => {
+        axios.get('http://127.0.0.1:3001/api/activities').then((data) => {
+            console.log(data.data)
+            setActivity(data.data);
+        })
+    }, []);
+
+    useEffect(() => {
+        axios.get('http://127.0.0.1:3001/api/genders').then((data) => {
+            console.log(data.data)
+            setGender(data.data);
         })
     }, []);
 
@@ -36,24 +62,32 @@ const SignUpPage=()=>{
                 </div>
                 <div className={classes.input}>
                     <p>Город</p>
-                    <select name="" id="">
+                    <select className={classes.select} name="" id="">
                         {
                             city.map((city=>{
-                                return <option value={city.id}>{city.name}</option>
+                                return <option className={classes.option} value={city.id}>{city.name}</option>
                             }))
                         }
                     </select>
                 </div>
                 <div className={classes.input}>
                     <p>Деятельность</p>
-                    <select name="" id="">
-                        <option value="">Модель</option>
+                    <select className={classes.select} name="" id="">
+                        {
+                            activity.map((activity=>{
+                                return <option className={classes.option} value={activity.id}>{activity.name}</option>
+                            }))
+                        }
                     </select>
                 </div>
                 <div className={classes.input}>
                     <p>Пол</p>
-                    <select name="" id="" >
-                        <option value="">Женский</option>
+                    <select className={classes.select} name="" id="" >
+                        {
+                            gender.map((gender=>{
+                                return <option className={classes.option} value={gender.id}>{gender.name}</option>
+                            }))
+                        }
                     </select>
                 </div>
                 <div className={classes.input}>

@@ -38,6 +38,15 @@ class PostController {
         }
     }
 
+    async getAllBeautyMasters(req, res) {
+        try {
+            const posts = await PostService.getAllBeautyMasters();
+            return res.json(posts);
+        } catch (e) {
+            res.status(500).json(e)
+        }
+    }
+
     async getOne(req, res) {
         try {
             const post = await PostService.getOne(req.params.id);

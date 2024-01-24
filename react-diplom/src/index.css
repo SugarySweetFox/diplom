@@ -79,7 +79,7 @@ h5 {
     line-height: 150%;
 }
 
-h6, input, ::placeholder, option, select {
+h6, input, ::placeholder {
     color: #544F4C;
     font-family: Raleway;
     font-size: 18px;

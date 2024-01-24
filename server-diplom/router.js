@@ -8,6 +8,8 @@ import LikeController from './controllers/LikeController.js'
 import GenderController from './controllers/GenderController.js'
 import CityController from './controllers/CityController.js'
 import ActivitiesController from './controllers/ActivitiesController.js'
+import SearchController from './controllers/SearchController.js'
+import ServiceController from './controllers/ServiceController.js'
 
 
 const router = new Router()
@@ -17,6 +19,7 @@ router.post('/posts', PostController.create)
 router.get('/posts', PostController.getAll)
 router.get('/models', PostController.getAllModels)
 router.get('/photografs', PostController.getAllPhotografs)
+router.get('/beautymasters', PostController.getAllBeautyMasters)
 router.get('/posts/:id', PostController.getOne)
 router.put('/posts', PostController.update)
 router.delete('/posts/:id', PostController.delete)
@@ -57,6 +60,14 @@ router.get('/cities/:id', CityController.getOne)
 // ACTIVITIES
 router.get('/activities', ActivitiesController.getAll)
 router.get('/activities/:id', ActivitiesController.getOne)
+
+// Search
+router.get('/searches', SearchController.getAll)
+router.get('/searches/:id', SearchController.getOne)
+
+// Service
+router.get('/services', ServiceController.getAll)
+router.get('/services/:id', ServiceController.getOne)
 
 // // // PORTFOLIO
 // router.post('/portfolio', PortfolioController.create)

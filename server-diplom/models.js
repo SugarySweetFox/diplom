@@ -181,6 +181,19 @@ const Search = sequelize.define("search", {
         allowNull: false
     }
 });
+
+const Service = sequelize.define("service", {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false
+    },
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
+});
 // Activities.hasMany(User);
 // Activities.hasMany(Post);
 
@@ -245,35 +258,12 @@ const Post = sequelize.define("post", {
     search_id: {
         type: Sequelize.INTEGER,
         allowNull: false
+    },
+    service_id: {
+        type: Sequelize.INTEGER,
+        allowNull: true
     }
 })
-
-
-Post.belongsTo(User, {
-    foreignKey: 'user_id',
-    targetKey: 'id'
-});
-
-
-//User
-
-
-User.belongsTo(Role, {
-    foreignKey: 'role_id',
-    targetKey: 'id'
-});
-User.belongsTo(City, {
-    foreignKey: 'city_id',
-    targetKey: 'id'
-});
-User.belongsTo(Activities, {
-    foreignKey: 'activities_id',
-    targetKey: 'id'
-});
-User.belongsTo(Gender, {
-    foreignKey: 'gender_id',
-    targetKey: 'id'
-});
 
 
 
@@ -299,8 +289,30 @@ Post.belongsTo(Search, {
     foreignKey: 'search_id',
     targetKey: 'id'
 });
+Post.belongsTo(Service, {
+    foreignKey: 'service_id',
+    targetKey: 'id'
+});
+
+//User
 
 
+User.belongsTo(Role, {
+    foreignKey: 'role_id',
+    targetKey: 'id'
+});
+User.belongsTo(City, {
+    foreignKey: 'city_id',
+    targetKey: 'id'
+});
+User.belongsTo(Activities, {
+    foreignKey: 'activities_id',
+    targetKey: 'id'
+});
+User.belongsTo(Gender, {
+    foreignKey: 'gender_id',
+    targetKey: 'id'
+});
 
 // Likes
 
@@ -325,4 +337,4 @@ Work.belongsTo(User, {
 
 
 
-export  { Post, User, Work, Role, Like, Gender, City, Activities, Type, Search }
+export  { Post, User, Work, Role, Like, Gender, City, Activities, Type, Search, Service }

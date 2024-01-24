@@ -4,6 +4,7 @@ import SignInPage from "../components/SignInPage";
 import SignUpPage from "../components/SignUpPage";
 import ProfilePage from "../components/ProfilePage";
 import PhotografPage from "../components/PhotografsPage";
+import BeautyMastersPage from "../components/BeautyMastersPage";
 
 const links = [{
     url: "/",
@@ -16,9 +17,14 @@ const links = [{
     component: ModelsPage
 },
 {
-    url: "/Photograf",
+    url: "/photograf",
     name: "Фотографы",
     component: PhotografPage
+},
+{
+    url: "/beautyMasters",
+    name: "Бьюти мастера",
+    component: BeautyMastersPage
 },
 {
     url: "/sign_in",
