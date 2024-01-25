@@ -72,12 +72,12 @@ const User = sequelize.define("user", {
         allowNull: false
     },
     birthday: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
         allowNull: true
     },
     photo: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
     city_id: {
         type: Sequelize.INTEGER,
@@ -85,7 +85,7 @@ const User = sequelize.define("user", {
     },
     role_id: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: true
     },
     gender_id: {
         type: Sequelize.INTEGER,

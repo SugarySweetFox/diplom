@@ -20,7 +20,7 @@ class authController {
             if (!errors.isEmpty()) {
                 return res.status(400).json({message: 'Ошибка при реистрации', errors})
             }
-            const {name, login, password, birthday, photo, genderId, cityId, activityId} = req.body
+            const {name, login, password, birthday, photo, gender_id, city_id, activities_id} = req.body
             const candidate = await User.findOne({
                 where: {
                  login: login
@@ -31,7 +31,7 @@ class authController {
             }
             const hashPassword = bcrypt.hashSync(password, 7);
             // const userRole = await Role.findByPk({name: 'user'})
-            const user =  User.create({name, login, password: hashPassword, birthday, photo, genderId, cityId, activityId
+            const user =  User.create({name, login, password: hashPassword, birthday, photo, gender_id, city_id, activities_id
                 // , roleId: [userRole.name]
             })
             // await user.save()

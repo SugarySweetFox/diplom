@@ -2,16 +2,33 @@ import { useEffect, useState } from "react";
 import  classes from "./index.module.css";
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import PostPhotografs from "../PostPhotografs";
+import PostBeautyMasters from "../PostBeautyMasters";
+import PostModels from "../PostModel";
 
 const MyPostPsge=()=>{
 
+    const [postsbeautymasters, setPostsbeautymasters] = useState([])
 
-    const [user, setUser] = useState();
+    const [postsphotografs, setPhotografs] = useState([])
+
+    const [postsmodels, setModels] = useState([])
+
+    const [userId, setUserId] = useState(1);
+
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:3001/api/users/1').then((data) => {
+        axios.get('http://127.0.0.1:3001/api/beautymasters').then((data) => {
             console.log(data.data)
-            setUser(data.data);
+            setPostsbeautymasters(data.data);
+        })
+        axios.get('http://127.0.0.1:3001/api/photografs').then((data) => {
+            console.log(data.data)
+            setPhotografs(data.data);
+        })
+        axios.get('http://127.0.0.1:3001/api/models').then((data) => {
+            console.log(data.data)
+            setModels(data.data);
         })
     }, []);
 
@@ -29,7 +46,15 @@ const MyPostPsge=()=>{
                     <div className={classes.center}>
                         <button className={classes.filled_btn}>Добавить</button>
                     </div>
-                        
+                    {postsbeautymasters.map((post) => {
+                        return post.user.id === userId ? <PostBeautyMasters name={post.name} user={post.user.name} city={post.city.name} search={post.search.name} service={post.service.name}  about={post.about_me}/> : false
+                    })}
+                    {postsphotografs.map((post) => {
+                        return post.user.id === userId ? <PostPhotografs name={post.name} user={post.user.name} city={post.city.name} search={post.search.name} type={post.type.name} about={post.about_me}/> : false
+                    })}
+                    {postsmodels.map((post) => {
+                        return post.user.id === userId ? <PostModels name={post.name} user={post.user.name} city={post.city.name} search={post.search.name} type={post.type.name} age={post.user.birthday} about={post.about_me}/> : false 
+                    })}
                 </div>              
             </div>            
         </div>

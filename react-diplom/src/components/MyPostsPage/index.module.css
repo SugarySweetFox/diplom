@@ -44,7 +44,9 @@
     backdrop-filter: blur(25px);
     margin: 0 auto;
     padding: 100px;
-    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .filled_btn {
@@ -53,5 +55,5 @@
     height: 55px;
     border: none;
     color: #CFC7BA;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
 }

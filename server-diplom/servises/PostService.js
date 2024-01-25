@@ -33,6 +33,7 @@ class PostService {
         return posts;
     }
 
+
     async getAllBeautyMasters() {
         const posts = await Post.findAll({ include: { all: true }, where: {
 
