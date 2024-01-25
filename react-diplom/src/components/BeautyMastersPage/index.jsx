@@ -15,9 +15,52 @@ const BeautyMastersPage=()=>{
         })
     }, []);
 
+    const [city, setCity] = useState([
+        {
+            name: "Moskoy",
+        }
+    ]);
+
+    const [service, setService] = useState([
+        {
+            name: "мастер маникюра",
+        }
+    ]);
+
+    useEffect(() => {
+        axios.get('http://127.0.0.1:3001/api/cities').then((data) => {
+            console.log(data.data)
+            setCity(data.data);
+        })
+    }, []);
+
+    useEffect(() => {
+        axios.get('http://127.0.0.1:3001/api/services').then((data) => {
+            console.log(data.data)
+            setService(data.data);
+        })
+    }, []);
+
 
     return <>
-    <div className={classes.line} />
+    <div className={classes.line}> 
+            <div className={classes.filter}> 
+                <select className={classes.select} name="" id="">
+                    {
+                        city.map((city=>{
+                            return <option className={classes.option} value={city.id}>{city.name}</option>
+                        }))
+                    }
+                </select>
+                <select className={classes.select} name="" id="">
+                    {
+                        service.map((service=>{
+                            return <option className={classes.option} value={service.id}>{service.name}</option>
+                        }))
+                    }
+                </select>
+            </div>
+    </div>
         <div className={classes.container}>
             {posts.map((post) => {
                 return <PostBeautyMasters name={post.name} user={post.user.name} city={post.city.name} search={post.search.name} service={post.service.name}  about={post.about_me}/>

@@ -37,11 +37,11 @@ const PortfolioPage=()=>{
     return <div className={classes.container}>
             <div className={classes.profile}>
                 <div className={classes.profile_top}>
-                <Link to="/profile"><button className={classes.post_btn}>Профиль</button></Link>
+                    <Link to="/profile"><button className={classes.post_btn}>Профиль</button></Link>
                     <div className={classes.div_first_btn}>
                         <p className={classes.center}>Портфолио</p>
                     </div>
-                    <a href=""><button className={classes.post_btn}>Ваши объявления</button></a>
+                    <Link to="/myposts"><button className={classes.post_btn}>Мои объявления</button></Link>
                 </div>
                 <div className={classes.profile_div}>
                         <h3>Лучшие работы</h3>

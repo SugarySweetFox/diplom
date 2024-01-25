@@ -23,7 +23,7 @@ const ProfilePage=()=>{
                         <p className={classes.center}>Профиль</p>
                     </div>
                     <Link to="/portfolio"><button className={classes.post_btn}>Портфолио</button></Link>
-                    <a href=""><button className={classes.post_btn}>Ваши объявления</button></a>
+                    <Link to="/myposts"><button className={classes.post_btn}>Мои объявления</button></Link>
                 </div>
                 <div className={classes.profile_div}>
                     <div className={classes.top_post}>
