@@ -1,12 +1,12 @@
 import TopMenu from "../TopMenu";
 import  classes from "./index.module.css";
 
-const Header=()=>{
+const Header=({user, setUser})=>{
    
     return <div className={classes.container}>
         <div className={classes.header}>
             <div className={classes.logo}></div>
-            <TopMenu/>
+            <TopMenu user={user} setUser={setUser}/>
         </div>
     </div>
 }

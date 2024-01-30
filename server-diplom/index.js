@@ -18,10 +18,10 @@ app.use('/auth', authRouter)
 
 async function startApp() {
     try {
-        sequelize.sync({force: true}).then(()=>{
-          createInfo();
+        sequelize.sync().then(()=>{
+          // createInfo();
 
-         
+         //{force: true}
 
 
 

@@ -2,17 +2,22 @@ import { useEffect, useState } from "react";
 import  classes from "./index.module.css";
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import { getUser } from "../../store/storage";
 
 const ProfilePage=()=>{
 
-
+    const [authUser, setAuthUser] = useState(getUser());
     const [user, setUser] = useState();
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:3001/api/users/1').then((data) => {
+       if(authUser){
+        axios.get(`http://127.0.0.1:3001/api/users/${authUser.id}`).then((data) => {
             console.log(data.data)
             setUser(data.data);
         })
+       } else {
+           window.location.href = '/sign_in'
+       }
     }, []);
 
 

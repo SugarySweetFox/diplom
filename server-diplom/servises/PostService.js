@@ -24,6 +24,13 @@ class PostService {
         return posts;
     }
 
+    async getAllById(id) {
+        const posts = await Post.findAll({ include: { all: true }, where: {
+            user_id: id
+        } });
+        return posts;
+    }
+
     async getAllPhotografs() {
         const posts = await Post.findAll({ include: { all: true }, where: {
 

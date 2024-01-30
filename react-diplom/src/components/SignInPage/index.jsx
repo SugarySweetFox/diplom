@@ -1,14 +1,13 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PopUp from "../PopUp";
 import  classes from "./index.module.css";
 import {Context} from "../../index.jsx"
+import { jwtDecode } from "jwt-decode";
+import { getUser, setUser } from "../../store/storage";
+
 
 const SignInPage=()=>{
-
-    const {user} = useContext(Context)
-    // user.set({name:'asdasd'});
-
     const [login, setLogin] = useState();
 
     const [password, setPassword] = useState();
@@ -23,10 +22,22 @@ const SignInPage=()=>{
                 login: login,
                 password: password,
         }).then(data=>{
+
+            console.log('=====auth start=====');
+            console.log("token->", jwtDecode(data.data.token));
             console.log(data);
             setPopUpMessage(data.data.message)
+            //decode 
+            let user = {id: '', login: '', token: ''}
+            user.token = data.data.token;
+            user.id = jwtDecode(data.data.token).id;
+            user.login = jwtDecode(data.data.token).login;
+            setUser(user);
             localStorage.setItem('token', data.data.token)
             setIsActive(true)
+            console.log('user->', getUser());
+            console.log('=====auth end=====');
+           
         }).catch(data=>{
             console.log(data);
             setPopUpMessage(data.response.data.message)

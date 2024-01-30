@@ -3,10 +3,12 @@ import PostService from '../servises/PostService.js'
 class PostController {
     async create(req, res) {
         try {
-            const post = await PostService.create(req.body, req.files.picture)
+            // const post = await PostService.create(req.body, req.files.picture)
+            const post = await PostService.create(req.body)
             res.json(post)
 
         } catch (e) {
+            console.log(e);
             res.status(500).json(e)
         }
     }
@@ -19,6 +21,16 @@ class PostController {
             res.status(500).json(e)
         }
     }
+
+    async getAllById(req, res) {
+        try {
+            const posts = await PostService.getAllById(req.params.id);
+            return res.json(posts);
+        } catch (e) {
+            res.status(500).json(e)
+        }
+    }
+
 
     async getAllModels(req, res) {
         try {
@@ -56,6 +68,7 @@ class PostController {
         }
     }
 
+   
     async update(req, res) {
         try {
             const updatedPost = await PostService.update(req.body)

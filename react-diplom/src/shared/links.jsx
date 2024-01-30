@@ -26,23 +26,9 @@ const links = [{
     name: "Бьюти мастера",
     component: BeautyMastersPage
 },
-{
-    url: "/sign_in",
-    name: "Вход",
-    component: SignInPage
-},
-{
-    url: "/sign_up",
-    name: "Регистрация",
-    component: SignUpPage
-},
-{
-    url: "/profile",
-    name: "Профиль",
-    component: ProfilePage
-}
-
 ]
+
+
 
 
 export default links;
