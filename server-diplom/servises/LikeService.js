@@ -3,7 +3,7 @@ import { Like } from "../models.js";
 
 class LikeService {
     async create(like) {
-        const cteatedLike = await Like.create({like})
+        const cteatedLike = await Like.create({...like})
         
         return cteatedLike;
     }

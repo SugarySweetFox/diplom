@@ -9,6 +9,7 @@ import { getUser } from "../../store/storage";
 const BeautyMastersPage=()=>{
 
 
+
     const [allPosts, setAllPosts] = useState([])
     const [posts, setPosts] = useState(allPosts)
 
@@ -90,7 +91,8 @@ const BeautyMastersPage=()=>{
     </div>
         <div className={classes.container}>
             {posts.map((post) => {
-                return <PostBeautyMasters name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} service={post.service.name}  about={post.about_me}/>
+                console.log(post);
+                return <PostBeautyMasters name={post.name} picture={post.picture} user={post.user.name} post_id={post.id} city={post.city.name} search={post.search.name} service={post.service.name}  about={post.about_me}/>
             })}
             
             

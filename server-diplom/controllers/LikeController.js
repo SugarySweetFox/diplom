@@ -3,7 +3,7 @@ import LikeService from '../servises/LikeService.js'
 class LikeController {
     async create(req, res) {
         try {
-            const like = await LikeService.create(req.body)
+            const like = await LikeService.create(req.body);
             res.json(like)
 
         } catch (e) {

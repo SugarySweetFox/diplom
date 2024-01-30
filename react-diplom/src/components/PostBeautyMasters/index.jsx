@@ -2,10 +2,20 @@ import  classes from "./index.module.css";
 import like from "../../img/like.svg";
 import { useState } from "react";
 import { getUser } from "../../store/storage";
+import axios from "axios";
 
-const PostModels=({name, city, search, about, user, service, picture})=>{
-
+const PostModels=({name, city, search, about, user, service, picture, post_id})=>{
     const [authUser, setAuthUser] = useState(getUser())
+    function likee(id) {
+        axios.post('http://localhost:3001/api/likes', {
+            post_id: id,
+            user_id: authUser.id
+        }).then((data) => {
+            console.log(data);
+        })
+    }
+
+   
 
     return <div className={classes.post}> 
                 <div className={classes.top_post}>
@@ -39,7 +49,7 @@ const PostModels=({name, city, search, about, user, service, picture})=>{
                             </div>
                         </div>
                     </div>
-                    <img src={like} alt="" className={classes.img_like}/>
+                    <img src={like} alt="" onClick={() => {likee(post_id)}} className={classes.img_like}/>
                 </div>
                 <div className={classes.bottom_post}>
                     {authUser ?  <> <button className={classes.filled_btn}>Написать</button></> : <></>}
