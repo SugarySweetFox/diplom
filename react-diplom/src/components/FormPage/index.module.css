@@ -71,3 +71,23 @@ input, .select, .option {
     flex-direction: column;
     gap: 5px;
 }
+
+.file {
+    display: none;
+}
+
+.file_active {
+    background: rgba(207, 199, 186, 0.40);
+    width: 400px;
+    height: 23px;
+    margin: 0 auto;
+    border: none;
+    padding: 14px 20px;
+    color: #544F4C;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;   
+    margin-top: 5px;
+}

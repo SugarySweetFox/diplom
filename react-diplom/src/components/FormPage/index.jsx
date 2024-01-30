@@ -1,12 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import  classes from "./index.module.css";
+import bsCustomFileInput from 'bs-custom-file-input';
+import FormData from 'form-data';
 
 const FormPage=({setIsActive, userId})=>{
     
     const [name, setName] = useState();
 
     const [about, setAbout] = useState();
+
+    const [picture, setPicture] = useState();
 
     const [choosedCity, setChoosedCity] = useState('1');
 
@@ -16,7 +20,7 @@ const FormPage=({setIsActive, userId})=>{
         }
     ]);
 
-    const [choosedService, setChoosedService] = useState('1');
+    const [choosedService, setChoosedService] = useState('0');
 
     const [service, setService] = useState([
         {
@@ -24,7 +28,7 @@ const FormPage=({setIsActive, userId})=>{
         }
     ]);
 
-    const [choosedType, setChoosedType] = useState('1');
+    const [choosedType, setChoosedType] = useState('0');
 
     const [type, setType] = useState([
         {
@@ -32,14 +36,6 @@ const FormPage=({setIsActive, userId})=>{
         }
     ]);
 
-
-    const [choosedGender, setChoosedGender] = useState('1');
-
-    const [gender, setGender] = useState([
-        {
-            name: "man",
-        }
-    ]);
 
     const [choosedSearch, setChoosedSearch] = useState('1');
 
@@ -74,10 +70,6 @@ const FormPage=({setIsActive, userId})=>{
             console.log(data.data)
             setActivity(data.data);
         })
-        axios.get('http://127.0.0.1:3001/api/genders').then((data) => {
-            console.log(data.data)
-            setGender(data.data);
-        })
         axios.get('http://127.0.0.1:3001/api/searches').then((data) => {
             console.log(data.data)
             setSearch(data.data);
@@ -87,19 +79,33 @@ const FormPage=({setIsActive, userId})=>{
 
     const handleSendForm = (e) => {
         e.preventDefault();
-        axios.post('http://127.0.0.1:3001/api/posts', {
-            
-                name: name,
-                city_id: choosedCity,
-                picture: "choosedGender",
-                activities_id: choosedActivity,
-                type_id: choosedType,
-                service_id: choosedService,
-                search_id: choosedSearch,
-                about_me: about,
-                user_id: userId
-            
-        }).then(data=>{
+
+        // axios({
+        //     method: "post",
+        //     url: "http://127.0.0.1:3001/api/posts",
+        //     data: bodyFormData,
+        //     headers: { "Content-Type": "multipart/form-data" },
+        //   })
+        //     .then(function (response) {
+        //       //handle success
+        //       console.log(response);
+        //     })
+        //     .catch(function (response) {
+        //       //handle error
+        //       console.log(response);
+        //     });
+        const formData = new FormData();
+        formData.append('picture', picture)
+        formData.append('name', name)
+        formData.append('city_id', choosedCity)
+        formData.append('activities_id', choosedActivity)
+        formData.append('type_id', choosedType > 0 ? choosedType : null)
+        formData.append('service_id', choosedService > 0 ? choosedService : null)
+        formData.append('search_id', choosedSearch)
+        formData.append('about_me', about)
+        formData.append('user_id', userId )
+
+        axios.post('http://127.0.0.1:3001/api/posts', formData).then(data=>{
             console.log(data);
             // setPopUpMessage(data.data.message)
             // setIsActive(true)
@@ -111,11 +117,22 @@ const FormPage=({setIsActive, userId})=>{
         });
     }
 
+    
+
+    // componentDidMount() {
+    //     bsCustomFileInput.init()
+    // }
 
     return     <><div className={classes.block}>                
             <div className={classes.inputs}>
                 <div className={classes.exit} onClick={(e)=>setIsActive(false)}>X</div>
                 <div className={classes.gap}>
+                <div className={classes.input}>
+                    <label htmlFor="file"><p>Фото</p>
+                        <div className={classes.file_active}>Выберите файл..</div>
+                        <input className={classes.file} id="file" type="file" value={picture}  onChange={(e)=>{setPicture(e.target.files[0])}} />
+                    </label>
+                </div>
                 <div className={classes.input}>
                     <p>Название поста</p>
                     <input type="text" placeholder="Название" value={name} onChange={(e)=>{setName(e.target.value)}} /> 
@@ -140,16 +157,6 @@ const FormPage=({setIsActive, userId})=>{
                         }
                     </select>
                 </div>
-                <div className={classes.input}>
-                    <p>Пол</p>
-                    <select className={classes.select} value={choosedGender} onChange={(e)=>{setChoosedGender(e.target.value)}} name="" id="" >
-                        {
-                            gender.map((gender=>{
-                                return <option className={classes.option} value={gender.id}>{gender.name}</option>
-                            }))
-                        }
-                    </select>
-                </div>
                 </div>
                 <div className={classes.gap}>
                 <div className={classes.input}>
@@ -165,6 +172,7 @@ const FormPage=({setIsActive, userId})=>{
                 <div className={classes.input}>
                     <p>Какие услуги предоставляете?</p>
                     <select className={classes.select} value={choosedService} onChange={(e)=>{setChoosedService(e.target.value)}} name="" id="">
+                        <option className={classes.option} value={'0'}>Нет</option>
                         {
                             service.map((service=>{
                                 return <option className={classes.option} value={service.id}>{service.name}</option>
@@ -175,6 +183,7 @@ const FormPage=({setIsActive, userId})=>{
                 <div className={classes.input}>
                     <p>Какой тип съемки?</p>
                     <select className={classes.select} value={choosedType} onChange={(e)=>{setChoosedType(e.target.value)}} name="" id="">
+                        <option className={classes.option} value={'0'}>Нет</option>
                         {
                             type.map((type=>{
                                 return <option className={classes.option} value={type.id}>{type.name}</option>

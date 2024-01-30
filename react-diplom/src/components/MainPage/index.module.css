@@ -12,7 +12,6 @@
     justify-content: space-between;
     width: 90%;
     margin: 0 auto;
-    align-items: center;
 }
 
 .left_index {
@@ -21,6 +20,7 @@
     flex-direction: column;
     gap: 60px;
     margin-right: 40px;
+    margin-top: 40px;
 }
 
 .right_index {

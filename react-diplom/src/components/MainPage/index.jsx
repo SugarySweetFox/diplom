@@ -1,9 +1,13 @@
 import  classes from "./index.module.css";
 import pic_index_img from "../../img/pic_index.png"
 import ButtonMain from "../ButtonMain";
+import { useState } from "react";
+import { getUser } from "../../store/storage";
 
 const MainPage=()=>{
    
+    const [authUser, setAuthUser] = useState(getUser());
+
     return <div className={classes.container}>
          <div className={classes.site_index}>
             <div className={classes.left_index}>
@@ -11,7 +15,8 @@ const MainPage=()=>{
                     <h1>Воплотим все ваши идеи в жизнь</h1>
                     <p className={classes.grey}>Что бы реализовать свои идеи в полном масштабе, вам нужно просто зарегистрироваться</p>
                 </div>
-                <ButtonMain />
+                {!authUser ?  <><ButtonMain /></> : <></>}
+                
             </div>
             <div className={classes.right_index}>
                 <img src={pic_index_img} alt="" className={classes.pic_index_img} /> 

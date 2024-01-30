@@ -1,12 +1,17 @@
 import  classes from "./index.module.css";
 import like from "../../img/like.svg";
+import { useState } from "react";
+import { getUser } from "../../store/storage";
 
-const PostModels=({name, city, search, age, about, user})=>{
+const PostModels=({name, city, search, age, about, user, picture})=>{
+
+    const [authUser, setAuthUser] = useState(getUser())
+
     return <div className={classes.post}> 
                 <div className={classes.top_post}>
                     <div className={classes.photo}>
                         <div className={classes.div_okr}></div>
-                        <img src="" alt="" />
+                            <img className={classes.img} src={"http://localhost:3001/" + picture} alt="" />
                         <div className={classes.div_border}></div>
                     </div>
                     <div className={classes.content}>
@@ -37,7 +42,7 @@ const PostModels=({name, city, search, age, about, user})=>{
                     <img src={like} alt="" className={classes.img_like}/>
                 </div>
                 <div className={classes.bottom_post}>
-                    <button className={classes.filled_btn}>Написать</button>
+                    {authUser ?  <> <button className={classes.filled_btn}>Написать</button></> : <></>}
                 </div>
     </div>
 }

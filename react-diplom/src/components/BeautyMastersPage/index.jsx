@@ -2,10 +2,13 @@ import  classes from "./index.module.css";
 import PostBeautyMasters from "../PostBeautyMasters";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { getUser } from "../../store/storage";
 
 
 
 const BeautyMastersPage=()=>{
+
+
     const [allPosts, setAllPosts] = useState([])
     const [posts, setPosts] = useState(allPosts)
 
@@ -87,7 +90,7 @@ const BeautyMastersPage=()=>{
     </div>
         <div className={classes.container}>
             {posts.map((post) => {
-                return <PostBeautyMasters name={post.name} user={post.user.name} city={post.city.name} search={post.search.name} service={post.service.name}  about={post.about_me}/>
+                return <PostBeautyMasters name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} service={post.service.name}  about={post.about_me}/>
             })}
             
             

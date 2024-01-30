@@ -6,6 +6,9 @@ import axios from "axios";
 
 
 const PhotografsPage=()=>{
+
+    
+
     const [allPosts, setAllPosts] = useState([])
     const [posts, setPosts] = useState(allPosts)
 
@@ -87,7 +90,7 @@ const PhotografsPage=()=>{
     </div>
         <div className={classes.container}>
             {posts.map((post) => {
-                return <PostPhotografs name={post.name} user={post.user.name} city={post.city.name} search={post.search.name} type={post.type.name} about={post.about_me}/>
+                return <PostPhotografs name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} type={post.type.name} about={post.about_me}/>
             })}
             
             
