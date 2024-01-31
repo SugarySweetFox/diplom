@@ -42,6 +42,7 @@ const PortfolioPage=()=>{
                         <p className={classes.center}>Портфолио</p>
                     </div>
                     <Link to="/myposts"><button className={classes.post_btn}>Мои объявления</button></Link>
+                    <Link to="/like"><button className={classes.post_btn}>Избранное</button></Link>
                 </div>
                 <div className={classes.profile_div}>
                         <h3>Лучшие работы</h3>

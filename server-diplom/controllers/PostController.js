@@ -52,9 +52,12 @@ class PostController {
 
     async getAllBeautyMasters(req, res) {
         try {
-            const posts = await PostService.getAllBeautyMasters();
+            let posts = JSON.parse(JSON.stringify(await PostService.getAllBeautyMasters()));
+            let newArr = posts.map((post) => ({...post, likes: [0]}))
+            console.log(newArr);
             return res.json(posts);
         } catch (e) {
+            console.log(e);
             res.status(500).json(e)
         }
     }

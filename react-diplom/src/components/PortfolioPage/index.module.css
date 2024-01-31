@@ -172,3 +172,7 @@
     right: -5px;
     bottom: -5px;
 }
+
+.container {
+    min-height: 55vh;
+}

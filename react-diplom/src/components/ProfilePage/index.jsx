@@ -29,6 +29,7 @@ const ProfilePage=()=>{
                     </div>
                     <Link to="/portfolio"><button className={classes.post_btn}>Портфолио</button></Link>
                     <Link to="/myposts"><button className={classes.post_btn}>Мои объявления</button></Link>
+                    <Link to="/like"><button className={classes.post_btn}>Избранное</button></Link>
                 </div>
                 <div className={classes.profile_div}>
                     <div className={classes.top_post}>

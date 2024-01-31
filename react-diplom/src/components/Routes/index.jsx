@@ -5,6 +5,7 @@ import ProfilePage from "../ProfilePage";
 import MyPostsPage from "../MyPostsPage";
 import SignInPage from "../SignInPage";
 import SignUpPage from "../SignUpPage";
+import LikePage from "../LikePage";
 
 const Routes = ({user, setUser}) => {
     return <RoutesReact>
@@ -14,6 +15,7 @@ const Routes = ({user, setUser}) => {
         <Route path="/portfolio" Component={PortfolioPage} user={user} setUser={setUser}/>
         <Route path="/profile" Component={ProfilePage} user={user} setUser={setUser}/>
         <Route path="/myposts" Component={MyPostsPage} user={user} setUser={setUser}/>
+        <Route path="/like" Component={LikePage} user={user} setUser={setUser}/>
         <Route path="/sign_in" Component={SignInPage} user={user} setUser={setUser}/>
         <Route path="/sign_up" Component={SignUpPage} user={user} setUser={setUser}/>
     </RoutesReact>

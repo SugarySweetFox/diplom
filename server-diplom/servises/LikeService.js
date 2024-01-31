@@ -1,4 +1,4 @@
-import { Like } from "../models.js";
+import { Like, Post } from "../models.js";
 
 
 class LikeService {
@@ -10,6 +10,15 @@ class LikeService {
 
     async getAll() {
         const likes = await Like.findAll();
+        return likes;
+    }
+
+    async getAllById(id) {
+        const likes = await Like.findAll({ include: Post, where: {
+
+            user_id: id
+
+        } });
         return likes;
     }
 

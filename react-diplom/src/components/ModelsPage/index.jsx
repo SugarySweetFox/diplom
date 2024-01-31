@@ -131,7 +131,8 @@ const ModelsPage=()=>{
         </div>
         <div className={classes.container}>
             {posts.map((post) => {
-                return <PostModels name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} type={post.type.name} age={post.user.birthday} about={post.about_me}/>
+                console.log(post);
+                return <PostModels name={post.name} picture={post.picture} user={post.user.name} post_id={post.id} city={post.city.name} search={post.search.name} type={post.type?.name} age={post.user.birthday} about={post.about_me}/>
             })}
             
             

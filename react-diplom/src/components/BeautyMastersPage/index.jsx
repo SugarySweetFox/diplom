@@ -32,16 +32,13 @@ const BeautyMastersPage=()=>{
 
     useEffect(() => {
         axios.get('http://127.0.0.1:3001/api/services').then((data) => {
-            console.log(data.data)
             setService(data.data);
         })
         axios.get('http://127.0.0.1:3001/api/beautymasters').then((data) => {
-            console.log(data.data)
             setAllPosts(data.data);
             setPosts(data.data);
         })
         axios.get('http://127.0.0.1:3001/api/cities').then((data) => {
-            console.log(data.data)
             setCity(data.data);
         })
     }, []);
@@ -91,7 +88,6 @@ const BeautyMastersPage=()=>{
     </div>
         <div className={classes.container}>
             {posts.map((post) => {
-                console.log(post);
                 return <PostBeautyMasters name={post.name} picture={post.picture} user={post.user.name} post_id={post.id} city={post.city.name} search={post.search.name} service={post.service.name}  about={post.about_me}/>
             })}
             

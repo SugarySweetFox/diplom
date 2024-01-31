@@ -48,6 +48,7 @@ router.get('/roles/:id', RoleController.getOne)
 // LIKE
 router.post('/likes', LikeController.create)
 router.get('/likes', LikeController.getAll)
+router.get('/likes/:id', LikeController.getAllById)
 router.delete('/likes/:id', LikeController.delete)
 
 // GENDER
