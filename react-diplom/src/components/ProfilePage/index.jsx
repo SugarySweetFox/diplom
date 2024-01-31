@@ -35,7 +35,7 @@ const ProfilePage=()=>{
                     <div className={classes.top_post}>
                         <div className={classes.photo}>
                             <div className={classes.div_okr}></div>
-                            <img src="" alt="" />
+                            <img className={classes.img} src={"http://localhost:3001/" + user?.photo} alt="" />
                             <div className={classes.div_border}></div>
                         </div>
                         <div className={classes.content}>

@@ -46,7 +46,7 @@
     height: 309px;
     background: #845946;
     position: absolute;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-left: 20px;
 }
 
@@ -61,6 +61,7 @@
     width: 285px;
     height: 365px;
     margin-right: 80px;
+    position: relative;
 }
 
 .content {
@@ -106,4 +107,12 @@
     height: 55px;
     border: none;
     color: #CFC7BA;
+}
+
+.img {
+    position: absolute;
+    width: 245px;
+    height: 325px;
+    right: -25px;
+    bottom: -5px;
 }

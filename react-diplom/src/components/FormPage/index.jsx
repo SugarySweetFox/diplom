@@ -1,11 +1,14 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import  classes from "./index.module.css";
 import bsCustomFileInput from 'bs-custom-file-input';
-import FormData from 'form-data';
+
 
 const FormPage=({setIsActive, userId})=>{
     
+    //Инпут фото
+    let picInput = useRef(null);
+
     const [name, setName] = useState();
 
     const [about, setAbout] = useState();
@@ -53,6 +56,11 @@ const FormPage=({setIsActive, userId})=>{
         }
     ]);
 
+    const handleUpload=()=>{
+        console.log('picInout0->>>>>>>>',picInput.current.files[0])
+        setPicture(picInput.current.files[0]);
+    }
+
     useEffect(() => {
         axios.get('http://127.0.0.1:3001/api/cities').then((data) => {
             console.log(data.data)
@@ -80,20 +88,6 @@ const FormPage=({setIsActive, userId})=>{
     const handleSendForm = (e) => {
         e.preventDefault();
 
-        // axios({
-        //     method: "post",
-        //     url: "http://127.0.0.1:3001/api/posts",
-        //     data: bodyFormData,
-        //     headers: { "Content-Type": "multipart/form-data" },
-        //   })
-        //     .then(function (response) {
-        //       //handle success
-        //       console.log(response);
-        //     })
-        //     .catch(function (response) {
-        //       //handle error
-        //       console.log(response);
-        //     });
         const formData = new FormData();
         formData.append('picture', picture)
         formData.append('name', name)
@@ -105,16 +99,40 @@ const FormPage=({setIsActive, userId})=>{
         formData.append('about_me', about)
         formData.append('user_id', userId )
 
-        axios.post('http://127.0.0.1:3001/api/posts', formData).then(data=>{
-            console.log(data);
-            // setPopUpMessage(data.data.message)
-            // setIsActive(true)
-        }).catch(data=>{
-            console.log('errr->', data);
-            // setPopUpMessage(data.response.data.message)
-            // setIsActive(true)
+        
+        axios({
+            method: "post",
+            url: "http://127.0.0.1:3001/api/posts",
+            data: formData,
+            headers: { "Content-Type": "multipart/form-data" },
+          })
+            .then(function (response) {
+              //handle success
+              console.log(response);
+            })
+            .catch(function (response) {
+              //handle error
+              console.log(response);
+            });
 
-        });
+
+
+
+
+
+
+
+
+        // axios.post('http://127.0.0.1:3001/api/posts', formData).then(data=>{
+        //     console.log(data);
+        //     // setPopUpMessage(data.data.message)
+        //     // setIsActive(true)
+        // }).catch(data=>{
+        //     console.log('errr->', data);
+        //     // setPopUpMessage(data.response.data.message)
+        //     // setIsActive(true)
+
+        // });
     }
 
     
@@ -129,8 +147,8 @@ const FormPage=({setIsActive, userId})=>{
                 <div className={classes.gap}>
                 <div className={classes.input}>
                     <label htmlFor="file"><p>Фото</p>
-                        <div className={classes.file_active}>Выберите файл..</div>
-                        <input className={classes.file} id="file" type="file" value={picture}  onChange={(e)=>{setPicture(e.target.files[0])}} />
+                        {!picture ?  <div className={classes.file_active}>Выберите файл..</div> : <div className={classes.file_active}>{picture.name}</div>} 
+                    <input className={classes.file} id="file" type="file" ref={picInput} onChange={handleUpload}/>
                     </label>
                 </div>
                 <div className={classes.input}>

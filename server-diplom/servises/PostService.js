@@ -3,9 +3,9 @@ import { Post, User, City, Type, Service } from "../models.js";
 import fileServise from "./fileServise.js";
 
 class PostService {
-    async create(post) {
-        // const fileName = await fileServise.saveFile(picture);
-        const cteatedPost = await Post.create({...post})
+    async create(post, picture) {
+        const fileName = await fileServise.saveFile(picture);
+        const cteatedPost = await Post.create({...post, picture: fileName})
         
         return cteatedPost;
     }
