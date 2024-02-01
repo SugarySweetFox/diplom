@@ -56,13 +56,13 @@ const MyPostPage=()=>{
                         <button className={classes.filled_btn} onClick={(e)=>setIsActive(true)}>Добавить</button>
                     </div>
                     {userId && postsbeautymasters.map((post) => {
-                        return post.user.id === userId ? <PostBeautyMasters name={post.name} user={post.user.name} city={post.city.name} search={post.search.name} service={post.service?.name}  about={post.about_me}/> : false
+                        return post.user.id === userId ? <PostBeautyMasters name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} service={post.service?.name}  about={post.about_me}/> : false
                     })}
                     {userId && postsphotografs.map((post) => {
-                        return post.user.id === userId ? <PostPhotografs name={post.name} user={post.user.name} city={post.city.name} search={post.search.name} type={post.type?.name} about={post.about_me}/> : false
+                        return post.user.id === userId ? <PostPhotografs name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} type={post.type?.name} about={post.about_me}/> : false
                     })}
                     {userId && postsmodels.map((post) => {
-                        return post.user.id === userId ? <PostModels name={post.name} user={post.user.name} city={post.city.name} search={post.search.name} type={post.type?.name} age={post.user.birthday} about={post.about_me}/> : false 
+                        return post.user.id === userId ? <PostModels name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} type={post.type?.name} age={post.user.birthday} about={post.about_me}/> : false 
                     })}
                 </div>              
             </div>            

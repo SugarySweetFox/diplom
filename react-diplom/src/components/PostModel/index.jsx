@@ -3,6 +3,7 @@ import like from "../../img/like.svg";
 import { useState } from "react";
 import { getUser } from "../../store/storage";
 import axios from "axios";
+import nophoto from "../../img/nophoto.png";
 
 const PostModels=({name, city, search, age, about, user, picture, post_id})=>{
 
@@ -20,7 +21,7 @@ const PostModels=({name, city, search, age, about, user, picture, post_id})=>{
                 <div className={classes.top_post}>
                     <div className={classes.photo}>
                         <div className={classes.div_okr}></div>
-                            <img className={classes.img} src={"http://localhost:3001/" + picture} alt="" />
+                            {picture ?  <img className={classes.img} src={"http://localhost:3001/" + picture} alt="" /> : <img className={classes.img} src={nophoto} alt="" />}
                         <div className={classes.div_border}></div>
                     </div>
                     <div className={classes.content}>

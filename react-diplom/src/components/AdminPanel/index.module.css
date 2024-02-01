@@ -1,0 +1,153 @@
+.center {
+    margin: auto;
+    margin-top: 20px;
+}
+
+.left {
+    text-align: left;
+}
+
+.posts, .posts_profile {
+    margin: 0 auto;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 80%;
+}
+
+.posts_profile {
+    width: 90%;
+}
+
+.top_post, .text_post {
+    display: flex;
+    flex-direction: row; 
+}
+
+.text_post {
+    gap: 10px;
+}
+
+.content_text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.bottom_post {
+    padding-top: 5px;
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+
+.profile {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.profile_div {
+    background: rgba(132, 89, 70, 0.24);
+    box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.07);
+    backdrop-filter: blur(25px);
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.profile_top {
+    display: flex;
+    flex-direction: row;
+}
+
+.div_first_btn {
+    background: rgba(132, 89, 70, 0.24);
+    backdrop-filter: blur(25px);
+    width: 190px;
+    height: 34px;
+    padding-top: 16px;
+}
+
+.post_btn {
+    border-top: 2px solid #845946;
+    border-right: 2px solid #845946;
+    border-left: 2px solid #845946;
+    width: 190px;
+    height: 50px;
+    background: none;
+    color: #28272C;
+    border-bottom: none;
+}
+
+.center {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.border_btn {
+    width: 250px;
+    height: 55px;
+    border: 2px solid #845946;
+    background: none;
+    color: #28272C;
+}
+
+.filled_btn {
+    background: #845946;
+    width: 250px;
+    height: 55px;
+    border: none;
+    color: #CFC7BA;
+}
+
+th {
+    color: #28272C;
+    font-family: Raleway;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    text-align: left;
+    width: 150px;
+}
+
+td {
+    color: #28272C;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 150%;
+    width: 150px;
+}
+
+tr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #B7A18C;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.brown {
+    border-bottom: 2px solid #845946;
+    margin-top: 0px;
+}
+
+.last {
+    width: 40px;
+    padding-left: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+.container {
+    min-height: 55vh;
+}

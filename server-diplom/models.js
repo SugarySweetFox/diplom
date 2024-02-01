@@ -271,27 +271,33 @@ const Post = sequelize.define("post", {
 
 Post.belongsTo(User, {
     foreignKey: 'user_id',
-    targetKey: 'id'
+    targetKey: 'id',
+    onDelete: 'cascade'
 });
 Post.belongsTo(City, {
     foreignKey: 'city_id',
-    targetKey: 'id'
+    targetKey: 'id',
+    onDelete: 'cascade'
 });
 Post.belongsTo(Activities, {
     foreignKey: 'activities_id',
-    targetKey: 'id'
+    targetKey: 'id',
+    onDelete: 'cascade'
 });
 Post.belongsTo(Type, {
     foreignKey: 'type_id',
-    targetKey: 'id'
+    targetKey: 'id',
+    onDelete: 'cascade'
 });
 Post.belongsTo(Search, {
     foreignKey: 'search_id',
-    targetKey: 'id'
+    targetKey: 'id',
+    onDelete: 'cascade'
 });
 Post.belongsTo(Service, {
     foreignKey: 'service_id',
-    targetKey: 'id'
+    targetKey: 'id',
+    onDelete: 'cascade'
 });
 
 //User
@@ -299,30 +305,36 @@ Post.belongsTo(Service, {
 
 User.belongsTo(Role, {
     foreignKey: 'role_id',
-    targetKey: 'id'
+    targetKey: 'id',
+    onDelete: 'cascade'
 });
 User.belongsTo(City, {
     foreignKey: 'city_id',
-    targetKey: 'id'
+    targetKey: 'id',
+    onDelete: 'cascade'
 });
 User.belongsTo(Activities, {
     foreignKey: 'activities_id',
-    targetKey: 'id'
+    targetKey: 'id',
+    onDelete: 'cascade'
 });
 User.belongsTo(Gender, {
     foreignKey: 'gender_id',
-    targetKey: 'id'
+    targetKey: 'id',
+    onDelete: 'cascade'
 });
 
 // Likes
 
 Like.belongsTo(User, {
     foreignKey: 'user_id',
-    targetKey: 'id'
+    targetKey: 'id',
+    onDelete: 'cascade'
 });
 Like.belongsTo(Post, {
     foreignKey: 'post_id',
-    targetKey: 'id'
+    targetKey: 'id',
+    onDelete: 'cascade'
 });
 
 
@@ -331,7 +343,8 @@ Like.belongsTo(Post, {
 
 Work.belongsTo(User, {
     foreignKey: 'user_id',
-    targetKey: 'id'
+    targetKey: 'id',
+    onDelete: 'cascade'
 });
 
 

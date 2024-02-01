@@ -3,6 +3,7 @@ import  classes from "./index.module.css";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { getUser } from "../../store/storage";
+import nophoto from "../../img/nophoto.png";
 
 const ProfilePage=()=>{
 
@@ -35,7 +36,7 @@ const ProfilePage=()=>{
                     <div className={classes.top_post}>
                         <div className={classes.photo}>
                             <div className={classes.div_okr}></div>
-                            <img className={classes.img} src={"http://localhost:3001/" + user?.photo} alt="" />
+                                {user?.photo ?  <img className={classes.img} src={"http://localhost:3001/" + user?.photo} alt="" /> : <img className={classes.img} src={nophoto} alt="" />}
                             <div className={classes.div_border}></div>
                         </div>
                         <div className={classes.content}>

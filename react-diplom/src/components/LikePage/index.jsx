@@ -70,21 +70,19 @@ const LikePage=()=>{
                        
                         {userId && postsbeautymasters.map((post) => {
                             
-                                    return like.includes(post.id) ? <PostBeautyMasters name={post.name} user={post.user.name} city={post.city.name} search={post.search.name} service={post.service?.name}  about={post.about_me}/> : false
+                                    return like.includes(post.id) ? <PostBeautyMasters name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} service={post.service?.name}  about={post.about_me}/> : false
                             
                         })}
                         {userId && postsphotografs.map((post) => {
                          
-                         return like.includes(post.id) ? <PostPhotografs name={post.name} user={post.user.name} city={post.city.name} search={post.search.name} type={post.type?.name} about={post.about_me}/> : false
+                         return like.includes(post.id) ? <PostPhotografs name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} type={post.type?.name} about={post.about_me}/> : false
                                 
                         })}
                         { userId && postsmodels.map((post) => {
                             
-                            return like.includes(post.id) ?  <PostModels name={post.name} user={post.user.name} city={post.city.name} search={post.search.name}  age={post.user.birthday} about={post.about_me}/> : false
-                                
-                            
-                                    
-                            })}
+                            return like.includes(post.id) ?  <PostModels name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name}  age={post.user.birthday} about={post.about_me}/> : false
+       
+                        })}
                         
                     
                 </div>              

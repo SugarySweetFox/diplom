@@ -1,0 +1,83 @@
+.center {
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.left {
+    text-align: left;
+}
+
+.profile {
+    width: 80%;
+    margin: 0 auto;
+
+}
+
+.profile_top {
+    display: flex;
+    flex-direction: row;
+}
+
+.div_first_btn {
+    background: rgba(132, 89, 70, 0.24);
+    backdrop-filter: blur(25px);
+    width: 190px;
+    height: 34px;
+    padding-top: 16px;
+}
+
+.post_btn {
+    border-top: 2px solid #845946;
+    border-right: 2px solid #845946;
+    border-left: 2px solid #845946;
+    width: 190px;
+    height: 50px;
+    background: none;
+    color: #28272C;
+    border-bottom: none;
+}
+
+.profile_div {
+    background: rgba(132, 89, 70, 0.24);
+    box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.07);
+    backdrop-filter: blur(25px);
+    margin: 0 auto;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.filled_btn {
+    background: #845946;
+    width: 250px;
+    height: 55px;
+    border: none;
+    color: #CFC7BA;
+    margin-bottom: 20px;
+}
+
+.filter {
+    width: 40%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 80px;
+    justify-content: center;
+}
+
+.select, .option {
+    background-color: transparent;
+    border: none;
+    color: #28272C;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-bottom: 1px solid #28272C;
+    padding-bottom: 2px;
+}

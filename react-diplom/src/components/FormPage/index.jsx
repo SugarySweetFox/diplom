@@ -115,24 +115,6 @@ const FormPage=({setIsActive, userId})=>{
               console.log(response);
             });
 
-
-
-
-
-
-
-
-
-        // axios.post('http://127.0.0.1:3001/api/posts', formData).then(data=>{
-        //     console.log(data);
-        //     // setPopUpMessage(data.data.message)
-        //     // setIsActive(true)
-        // }).catch(data=>{
-        //     console.log('errr->', data);
-        //     // setPopUpMessage(data.response.data.message)
-        //     // setIsActive(true)
-
-        // });
     }
 
     
