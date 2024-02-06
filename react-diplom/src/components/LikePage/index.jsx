@@ -6,9 +6,11 @@ import PostPhotografs from "../PostPhotografs";
 import PostBeautyMasters from "../PostBeautyMasters";
 import PostModels from "../PostModel";
 import { getUser } from "../../store/storage";
+import Preloader from "../Preloader";
 
 const LikePage=()=>{
 
+    const [isLoading, setIsLoading] = useState(true);
     const [authUser, setAuthUser] = useState(getUser());
 
     const [postsbeautymasters, setPostsbeautymasters] = useState([])
@@ -21,8 +23,7 @@ const LikePage=()=>{
 
     const [userId, setUserId] = useState(getUser().id);
 
-
-    useEffect(() => {
+    function refreshPosts(){
         axios.get('http://127.0.0.1:3001/api/beautymasters').then((data) => {
             console.log(data.data)
             setPostsbeautymasters(data.data);
@@ -36,9 +37,17 @@ const LikePage=()=>{
             setModels(data.data);
         })
         axios.get(`http://127.0.0.1:3001/api/likes/${userId}`).then((data) => {
-            console.log(data.data)
+            console.log("likes->", data.data)
             setLike(data.data);
         })
+    }
+
+
+    useEffect(() => {
+        refreshPosts();
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 1000);
     }, []);
 
 
@@ -46,6 +55,7 @@ const LikePage=()=>{
 
 
     return <><div className={classes.container}>
+                {isLoading && <Preloader/>}
             <div className={classes.profile}>
                 <div className={classes.profile_top}>
                     <Link to="/profile"><button className={classes.post_btn}>Профиль</button></Link>
@@ -66,21 +76,23 @@ const LikePage=()=>{
 
                     })} */}
                  
+
+
                        
                        
                         {userId && postsbeautymasters.map((post) => {
                             
-                                    return like.includes(post.id) ? <PostBeautyMasters name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} service={post.service?.name}  about={post.about_me}/> : false
+                        return like?.includes(post.id) ? <PostBeautyMasters post_id={post.id} likes={post.likes} refreshPosts={refreshPosts} name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} service={post.service?.name}  about={post.about_me}/> : false
                             
                         })}
                         {userId && postsphotografs.map((post) => {
                          
-                         return like.includes(post.id) ? <PostPhotografs name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} type={post.type?.name} about={post.about_me}/> : false
+                         return like?.includes(post.id) ? <PostPhotografs post_id={post.id} likes={post.likes} refreshPosts={refreshPosts} name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} type={post.type?.name} about={post.about_me}/> : false
                                 
                         })}
                         { userId && postsmodels.map((post) => {
                             
-                            return like.includes(post.id) ?  <PostModels name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name}  age={post.user.birthday} about={post.about_me}/> : false
+                        return like?.includes(post.id) ? <PostModels post_id={post.id} likes={post.likes} refreshPosts={refreshPosts} name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name}  age={post.user.birthday} about={post.about_me}/> : false
        
                         })}
                         

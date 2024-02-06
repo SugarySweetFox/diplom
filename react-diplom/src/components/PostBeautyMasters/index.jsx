@@ -1,20 +1,15 @@
 import  classes from "./index.module.css";
-import like from "../../img/like.svg";
+import likeImg from "../../img/like.svg";
+import likeImgActive from "../../img/like_active.svg"
 import { useState } from "react";
 import { getUser } from "../../store/storage";
 import axios from "axios";
 import nophoto from "../../img/nophoto.png";
+import { checkLike, dislike, like } from "../../utils/likes";
 
-const PostModels=({name, city, search, about, user, service, picture, post_id})=>{
+const PostModels=({name, city, search, about, user, service, picture, post_id, refreshPosts, likes})=>{
     const [authUser, setAuthUser] = useState(getUser())
-    function likee(id) {
-        axios.post('http://localhost:3001/api/likes', {
-            post_id: id,
-            user_id: authUser.id
-        }).then((data) => {
-            console.log(data);
-        })
-    }
+  
 
    
 
@@ -50,7 +45,7 @@ const PostModels=({name, city, search, about, user, service, picture, post_id})=
                             </div>
                         </div>
                     </div>
-                    <img src={like} alt="" onClick={() => {likee(post_id)}} className={classes.img_like}/>
+                    <><img src={checkLike(likes, authUser.id) ? likeImgActive : likeImg} alt="" onClick={ checkLike(likes, authUser.id) ? () => {dislike(post_id,  authUser.id); refreshPosts()} : () => {like(post_id,  authUser.id); refreshPosts()}} className={classes.img_like}/> <span>{likes?.length}</span></>
                 </div>
                 <div className={classes.bottom_post}>
                     {authUser ?  <> <button className={classes.filled_btn}>Написать</button></> : <></>}

@@ -4,25 +4,37 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import { getUser } from "../../store/storage";
 import nophoto from "../../img/nophoto.png";
+import UpdateProfile from "../UpdateProfile";
+import Preloader from "../Preloader";
 
 const ProfilePage=()=>{
-
+    const [isLoading, setIsLoading] = useState(true);
     const [authUser, setAuthUser] = useState(getUser());
     const [user, setUser] = useState();
 
-    useEffect(() => {
-       if(authUser){
-        axios.get(`http://127.0.0.1:3001/api/users/${authUser.id}`).then((data) => {
-            console.log(data.data)
+    function updateUser(id) {
+        axios.get(`http://127.0.0.1:3001/api/users/${id}`).then((data) => {
+            console.log("useer-",data.data)
             setUser(data.data);
         })
+    }
+
+    useEffect(() => {
+       if(authUser){
+        updateUser(authUser.id, setUser) 
        } else {
-           window.location.href = '/sign_in'
+           window.location.href = '/sign_in';
        }
+       setTimeout(() => {
+        setIsLoading(false)
+    }, 1000);
     }, []);
 
 
-    return <div className={classes.container}>
+    const [isActive, setIsActive] = useState(false);
+
+    return <>{isActive&&<UpdateProfile updateUser={updateUser} user={user} setIsActive={setIsActive}/>}<div className={classes.container}>
+        {isLoading && <Preloader/>}
             <div className={classes.profile}>
                 <div className={classes.profile_top}>
                     <div className={classes.div_first_btn}>
@@ -62,11 +74,12 @@ const ProfilePage=()=>{
                         </div>
                     </div>
                     <div className={classes.bottom_post}>
-                    <a><button className={classes.border_btn}>Редактировать</button></a>
+                    <a><button className={classes.border_btn} onClick={(e)=>setIsActive(true)}>Редактировать</button></a>
                     </div>
                 </div>
             </div> 
             
         </div>
+        </>
 }
 export default ProfilePage;

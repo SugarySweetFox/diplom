@@ -110,6 +110,13 @@
     border-bottom: none;
 }
 
+.post_btn:hover {
+    border-top: 2px solid #CFC7BA;
+    border-right: 2px solid #CFC7BA;
+    border-left: 2px solid #CFC7BA;
+    color: #CFC7BA;
+}
+
 .center {
     text-align: center;
     margin: 0 auto;
@@ -121,6 +128,11 @@
     border: 2px solid #845946;
     background: none;
     color: #28272C;
+}
+
+.border_btn:hover {
+    border: 2px solid #CFC7BA;
+    color: #CFC7BA;
 }
 
 .filled_btn {

@@ -31,9 +31,10 @@ class UserController {
 
     async update(req, res) {
         try {
-            const updatedUser = await UserService.update(req.body)
+            const updatedUser = await UserService.update(req.body, req.files?.picture, req.params.id, res)
             return res.json(updatedUser);
         } catch (e) {
+            console.log(e);
             res.status(500).send(e.toString())
         }
     }

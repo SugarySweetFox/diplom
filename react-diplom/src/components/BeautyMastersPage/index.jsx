@@ -3,12 +3,20 @@ import PostBeautyMasters from "../PostBeautyMasters";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { getUser } from "../../store/storage";
+import Preloader from "../Preloader";
 
 
 
 const BeautyMastersPage=()=>{
-
-
+    const [isLoading, setIsLoading] = useState(true);
+    function refreshPosts(){
+        axios.get('http://127.0.0.1:3001/api/beautymasters').then((data) => {
+            console.log(data.data)
+            setAllPosts(data.data);
+            setPosts(data.data);
+        })
+        
+    }
 
     const [allPosts, setAllPosts] = useState([])
     const [posts, setPosts] = useState(allPosts)
@@ -41,6 +49,9 @@ const BeautyMastersPage=()=>{
         axios.get('http://127.0.0.1:3001/api/cities').then((data) => {
             setCity(data.data);
         })
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 1000);
     }, []);
     
     useEffect(() => {
@@ -67,6 +78,7 @@ const BeautyMastersPage=()=>{
 
     return <>
     <div className={classes.line}> 
+    {isLoading && <Preloader/>}
             <div className={classes.filter}> 
                 <select className={classes.select} onChange={(e)=>{setChoosedCity(e.target.value);}} name="" id="">
                 <option className={classes.option} value={'s'}>Город</option>
@@ -88,7 +100,7 @@ const BeautyMastersPage=()=>{
     </div>
         <div className={classes.container}>
             {posts.map((post) => {
-                return <PostBeautyMasters name={post.name} picture={post.picture} user={post.user.name} post_id={post.id} city={post.city.name} search={post.search.name} service={post.service.name}  about={post.about_me}/>
+                return <PostBeautyMasters likes={post.likes} refreshPosts={refreshPosts} name={post.name} picture={post.picture} user={post.user.name} post_id={post.id} city={post.city.name} search={post.search.name} service={post.service.name}  about={post.about_me}/>
             })}
             
             

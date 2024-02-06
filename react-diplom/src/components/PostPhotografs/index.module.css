@@ -99,6 +99,7 @@
 .img_like {
     margin-left: auto;
     height: 40px;
+    cursor: pointer;
 }
 
 .filled_btn {
@@ -115,4 +116,8 @@
     height: 325px;
     right: -25px;
     bottom: -5px;
+}
+
+.filled_btn:hover {
+    background: rgba(132, 89, 70, 0.8);
 }

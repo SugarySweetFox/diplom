@@ -2,12 +2,22 @@ import  classes from "./index.module.css";
 import PostModels from "../PostModel";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Preloader from "../Preloader";
 
 
 
 const ModelsPage=()=>{
     const [allPosts, setAllPosts] = useState([])
     const [posts, setPosts] = useState(allPosts)
+    const [isLoading, setIsLoading] = useState(true);
+    function refreshPosts(){
+        axios.get('http://127.0.0.1:3001/api/models').then((data) => {
+            console.log(data.data)
+            setAllPosts(data.data);
+            setPosts(data.data);
+        })
+        
+    }
 
 
     const [choosedCity, setChoosedCity] = useState('s');
@@ -43,15 +53,14 @@ const ModelsPage=()=>{
             console.log(data.data)
             setSearch(data.data);
         })
-        axios.get('http://127.0.0.1:3001/api/models').then((data) => {
-            console.log(data.data)
-            setAllPosts(data.data);
-            setPosts(data.data);
-        })
+        refreshPosts();
         axios.get('http://127.0.0.1:3001/api/genders').then((data) => {
             console.log(data.data)
             setGender(data.data);
         })
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 1000);
     }, []);
 
     useEffect(() => {
@@ -101,7 +110,8 @@ const ModelsPage=()=>{
     }, [choosedCity, choosedGender, choosedSearch]);
 
     return <>
-        <div className={classes.line}> 
+        <div className={classes.line}>
+        {isLoading && <Preloader/>} 
             <div className={classes.filter}> 
                 <select className={classes.select}  onChange={(e)=>{setChoosedCity(e.target.value)}} name="" id="">
                 <option className={classes.option} value={'s'}>Город</option>
@@ -132,7 +142,7 @@ const ModelsPage=()=>{
         <div className={classes.container}>
             {posts.map((post) => {
                 console.log(post);
-                return <PostModels name={post.name} picture={post.picture} user={post.user.name} post_id={post.id} city={post.city.name} search={post.search.name}  age={post.user.birthday} about={post.about_me}/>
+                return <PostModels refreshPosts={refreshPosts} name={post.name} picture={post.picture} user={post.user.name} post_id={post.id} city={post.city.name} search={post.search.name}  age={post.user.birthday} about={post.about_me} likes={post.likes}/>
             })}
             
             

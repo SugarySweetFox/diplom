@@ -20,3 +20,11 @@
     color: #CFC7BA;
 }
 
+.filled_btn:hover {
+    background: rgba(132, 89, 70, 0.8);
+}
+
+.border_btn:hover {
+    border: 2px solid #CFC7BA;
+    color: #CFC7BA;
+}

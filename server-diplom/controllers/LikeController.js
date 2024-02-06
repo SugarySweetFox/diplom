@@ -16,6 +16,7 @@ class LikeController {
             const likes = await LikeService.getAll();
             return res.json(likes);
         } catch (e) {
+            console.log(e);
             res.status(500).json(e)
         }
     }
@@ -25,10 +26,8 @@ class LikeController {
             const likes = await LikeService.getAllById(req.params.id);
             let newArr = [];
             likes.forEach(like => {
-                console.log(like.post.id);
-                newArr.push(like.post.id)
+                newArr.push(like.post_id)
             });
-            
             return res.json(newArr);
         } catch (e) {
             console.log(e);
@@ -38,9 +37,10 @@ class LikeController {
 
     async delete(req, res) {
         try {
-            const like = await LikeService.delete(req.params.id)
+            const like = await LikeService.delete(req.body.post_id, req.body.user_id, res)
             return res.json(like)
         } catch (e) {
+            console.log(e);
             res.status(500).send(e.toString())
         }
     }

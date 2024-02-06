@@ -22,17 +22,23 @@ class UserService {
         return user;
     }
 
-    async update(user) {
-        if (!user.id) {
+    async update(user, picture, id, res) {
+        if (picture) {const fileName = await fileServise.saveFile(picture);}
+        if (!id) {
             res.status(400).json({message: 'Id не указан'})
             return
         }
-        const updatedUser = await User.update({name: user.name, login: user.login, password: user.password, birthday: user.birthday, photo: user.photo}, {
-            where: {
-                id: user.id,
-            }
-        })
-        return updatedUser;
+        try {
+            console.log('no picture');
+            const updatedUser = await User.update(picture ? {name: user.name, login: user.login, password: user.password, birthday: user.birthday, photo: fileName, activities_id: +user.activities_id, city_id: +user.city_id, gender_id: +user.gender_id}: {name: user.name, login: user.login, password: user.password, birthday: user.birthday, activities_id: +user.activities_id, city_id: +user.city_id, gender_id: +user.gender_id}, {
+                where: {
+                    id: id,
+                }
+            })
+            return updatedUser;
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     async delete(id) {

@@ -16,6 +16,7 @@ class WorkController {
             const works = await WorkService.getAll();
             return res.json(works);
         } catch (e) {
+
             res.status(500).json(e)
         }
     }

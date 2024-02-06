@@ -22,13 +22,14 @@ class LikeService {
         return likes;
     }
 
-    async delete(id) {
-            if (!id) {
+    async delete(postId, userId, res) {
+            if (!postId || !userId) {
                 res.status(400).json({message: 'Id не указан'})
             }
             const like = await Like.destroy({
                 where: {
-                    id: id
+                    post_id: postId,
+                    user_id: userId
                 }
             })
             return like;

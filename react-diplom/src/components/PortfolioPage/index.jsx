@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 
 import like from "../../img/imagee.png";
 import { getUser } from "../../store/storage";
+import Preloader from "../Preloader";
 const PortfolioPage=()=>{
 
     let picInput = useRef(null);
-
+    const [isLoading, setIsLoading] = useState(true);
     const [picture, setPicture] = useState();
 
     const [userId, setUserId] = useState(getUser().id);
@@ -37,6 +38,9 @@ const PortfolioPage=()=>{
             console.log(data.data)
             setWorks(data.data);
         })
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 1000);
     }, []);
 
     useEffect(() => {
@@ -49,12 +53,25 @@ const PortfolioPage=()=>{
         setPicture(picInput.current.files[0]);
     }
 
+    function delitee(id) {
+        if (window.confirm('Вы уверены?'))
+        axios.delete(`http://localhost:3001/api/works/${id}`).then((data) => {
+            console.log(data);
+            axios.get(`http://127.0.0.1:3001/api/works`).then((data) => {
+            console.log(data.data)
+            setWorks(data.data);
+        })
+        })
+    }
+
     const handleSendForm = () => {
       
         const formData = new FormData();
         formData.append('picture', picture)
         formData.append('user_id', userId )
 
+
+        
         
         axios({
             method: "post",
@@ -78,6 +95,7 @@ const PortfolioPage=()=>{
     }
 
     return <div className={classes.container}>
+        {isLoading && <Preloader/>}
             <div className={classes.profile}>
                 <div className={classes.profile_top}>
                     <Link to="/profile"><button className={classes.post_btn}>Профиль</button></Link>
@@ -109,7 +127,7 @@ const PortfolioPage=()=>{
                             
                             {
                                 works.map((work)=>{
-                                    return <div className={classes.work}><img className={classes.work} src={"http://localhost:3001/" + work.picture} alt="" /></div>
+                                    return <div className={classes.work}><img className={classes.work} src={"http://localhost:3001/" + work.picture} alt="" /><div className={classes.exit} onClick={() => {delitee(work?.id)}}>X</div></div>
                                 })
                             }
                         </div>

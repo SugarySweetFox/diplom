@@ -4,9 +4,10 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import delite from "../../img/delite.svg";
 import { getUser } from "../../store/storage";
+import Preloader from "../Preloader";
 
 const AdminPanel=()=>{
-
+    const [isLoading, setIsLoading] = useState(true);
     const [authUser, setAuthUser] = useState(getUser());
 
     const [allUsers, setAllUsers] = useState([])
@@ -17,6 +18,9 @@ const AdminPanel=()=>{
             console.log(data.data)
             setUsers(data.data);
         })
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 1000);
     }, []);
 
     function delitee(id) {
@@ -31,6 +35,7 @@ const AdminPanel=()=>{
     }
 
     return <div className={classes.container}>
+        {isLoading && <Preloader/>}
             <div className={classes.profile}>
                 <div className={classes.profile_top}>
                     <div className={classes.div_first_btn}>

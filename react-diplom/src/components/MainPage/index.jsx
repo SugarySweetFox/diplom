@@ -5,7 +5,6 @@ import { useState } from "react";
 import { getUser } from "../../store/storage";
 
 const MainPage=()=>{
-   
     const [authUser, setAuthUser] = useState(getUser());
 
     return <div className={classes.container}>

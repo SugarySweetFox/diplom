@@ -9,6 +9,13 @@
     cursor: pointer;
 }
 
+.center:hover {
+    border: 2px solid #CFC7BA;
+    color: #CFC7BA;
+    background: none;
+}
+
+
 .exit {
     position: absolute;
     right: 20px;
@@ -23,7 +30,7 @@
 }
 
 .block {
-    background: rgba(132, 89, 70, 0.24);
+    background: rgba(132, 89, 70, 0.6);
     box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.07);
     backdrop-filter: blur(25px);
     padding: 80px;
@@ -92,10 +99,4 @@ input, .select, .option {
     font-weight: 500;
     line-height: normal;   
     margin-top: 5px;
-}
-
-.center:hover {
-    border: 2px solid #CFC7BA;
-    color: #CFC7BA;
-    background: none;
 }

@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import PopUp from "../PopUp";
+import Preloader from "../Preloader";
 import  classes from "./index.module.css";
 
 const SignUpPage=()=>{
-    
+    const [isLoading, setIsLoading] = useState(true);
     const [name, setName] = useState();
 
     const [login, setLogin] = useState();
@@ -48,20 +49,15 @@ const SignUpPage=()=>{
             console.log(data.data)
             setCity(data.data);
         })
-    }, []);
-
-    useEffect(() => {
         axios.get('http://127.0.0.1:3001/api/activities').then((data) => {
             console.log(data.data)
             setActivity(data.data);
         })
-    }, []);
-
-    useEffect(() => {
         axios.get('http://127.0.0.1:3001/api/genders').then((data) => {
             console.log(data.data)
             setGender(data.data);
         })
+        setIsLoading(false)
     }, []);
 
 
@@ -84,12 +80,15 @@ const SignUpPage=()=>{
         }).catch(data=>{
             console.log(data);
             setPopUpMessage(data.response.data.message)
-            setIsActive(true)
+            setTimeout(() => {
+                setIsLoading(false)
+            }, 1000);
 
         });
     }
 
     return     <>{isActive&&<PopUp message={popUpMessage} setIsActive={setIsActive}/>}<div className={classes.block_brown}>
+        {isLoading && <Preloader/>}
         <h3>Вход</h3>
                 
             <div className={classes.inputs}>

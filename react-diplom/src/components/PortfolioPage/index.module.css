@@ -146,6 +146,12 @@
     border: 2px solid #F5F5F5;
     background: none;
     color: #F5F5F5;
+    cursor: pointer;
+}
+
+.add_work:hover {
+    border: 2px solid #845946;
+    color: #845946;
 }
 
 .white {
@@ -182,4 +188,22 @@
 
 .file {
     display: none;
+}
+
+
+.post_btn:hover {
+    border-top: 2px solid #CFC7BA;
+    border-right: 2px solid #CFC7BA;
+    border-left: 2px solid #CFC7BA;
+    color: #CFC7BA;
+}
+
+label {
+    cursor: pointer;
+}
+
+.exit {
+    cursor: pointer;
+    margin-left: 170px;
+    margin-top: -250px;
 }

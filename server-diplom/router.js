@@ -29,7 +29,7 @@ router.delete('/posts/:id', PostController.delete)
 router.post('/users', UserController.create)
 router.get('/users', UserController.getAll)
 router.get('/users/:id', UserController.getOne)
-router.put('/users', UserController.update)
+router.put('/users/:id', UserController.update)
 router.delete('/users/:id', UserController.delete)
 
 // WORK
@@ -49,7 +49,7 @@ router.get('/roles/:id', RoleController.getOne)
 router.post('/likes', LikeController.create)
 router.get('/likes', LikeController.getAll)
 router.get('/likes/:id', LikeController.getAllById)
-router.delete('/likes/:id', LikeController.delete)
+router.post('/dislikes', LikeController.delete)
 
 // GENDER
 router.get('/genders', GenderController.getAll)

@@ -183,3 +183,16 @@
 .file {
     display: none;
 }
+
+.post_btn:hover {
+    border-top: 2px solid #CFC7BA;
+    border-right: 2px solid #CFC7BA;
+    border-left: 2px solid #CFC7BA;
+    color: #CFC7BA;
+}
+
+.exit {
+    cursor: pointer;
+    margin-left: 170px;
+    margin-top: -250px;
+}

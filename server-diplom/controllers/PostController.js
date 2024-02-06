@@ -1,4 +1,6 @@
+import LikeService from '../servises/LikeService.js';
 import PostService from '../servises/PostService.js'
+import preparePosts from '../utils/prepare.js';
 
 class PostController {
     async create(req, res) {
@@ -14,8 +16,22 @@ class PostController {
 
     async getAll(req, res) {
         try {
-            const posts = await PostService.getAll();
-            return res.json(posts);
+            const posts = preparePosts(await PostService.getAll());
+            const likes = preparePosts(await LikeService.getAll());
+            console.log('likes=>', likes);
+            let postsWithLikes = [];
+            posts.forEach(post=>{
+                let likeArr = [];
+                likes.forEach(like=>{
+                   
+                    if(post.id === like.post_id){
+                        likeArr.push(like.user_id)
+                    }
+                });
+                postsWithLikes.push({...post, likes: likeArr});
+               
+            });
+            return res.json(postsWithLikes);
         } catch (e) {
             res.status(500).json(e)
         }
@@ -33,17 +49,45 @@ class PostController {
 
     async getAllModels(req, res) {
         try {
-            const posts = await PostService.getAllModels();
-            return res.json(posts);
+            const posts = preparePosts(await PostService.getAllModels());
+            const likes = preparePosts(await LikeService.getAll());
+            console.log('likes=>', likes);
+            let postsWithLikes = [];
+            posts.forEach(post=>{
+                let likeArr = [];
+                likes.forEach(like=>{
+                    if(post.id === like.post_id){
+                        likeArr.push(like.user_id)
+                    }
+                });
+                postsWithLikes.push({...post, likes: likeArr});
+               
+            });
+            return res.json(postsWithLikes);
         } catch (e) {
+            console.log(e);
             res.status(500).json(e)
         }
     }
 
     async getAllPhotografs(req, res) {
         try {
-            const posts = await PostService.getAllPhotografs();
-            return res.json(posts);
+            const posts = preparePosts(await PostService.getAllPhotografs());
+            const likes = preparePosts(await LikeService.getAll());
+            console.log('likes=>', likes);
+            let postsWithLikes = [];
+            posts.forEach(post=>{
+                let likeArr = [];
+                likes.forEach(like=>{
+                   
+                    if(post.id === like.post_id){
+                        likeArr.push(like.user_id)
+                    }
+                });
+                postsWithLikes.push({...post, likes: likeArr});
+               
+            });
+            return res.json(postsWithLikes);
         } catch (e) {
             res.status(500).json(e)
         }
@@ -51,10 +95,21 @@ class PostController {
 
     async getAllBeautyMasters(req, res) {
         try {
-            let posts = JSON.parse(JSON.stringify(await PostService.getAllBeautyMasters()));
-            let newArr = posts.map((post) => ({...post, likes: [0]}))
-            console.log(newArr);
-            return res.json(posts);
+            let posts = preparePosts(await PostService.getAllBeautyMasters());
+            const likes = preparePosts(await LikeService.getAll());
+            let postsWithLikes = [];
+            posts.forEach(post=>{
+                let likeArr = [];
+                likes.forEach(like=>{
+                   
+                    if(post.id === like.post_id){
+                        likeArr.push(like.user_id)
+                    }
+                });
+                postsWithLikes.push({...post, likes: likeArr});
+               
+            });
+            return res.json(postsWithLikes);
         } catch (e) {
             console.log(e);
             res.status(500).json(e)

@@ -6,9 +6,10 @@ import delite from "../../img/delite.svg";
 import PostModels from "../PostModel";
 import PostPhotografs from "../PostPhotografs";
 import PostBeautyMasters from "../PostBeautyMasters";
+import Preloader from "../Preloader";
 
 const AdminAllPosts=()=>{
-
+    const [isLoading, setIsLoading] = useState(true);
     const [allPosts, setAllPosts] = useState([])
     const [posts, setPosts] = useState(allPosts)
 
@@ -26,6 +27,9 @@ const AdminAllPosts=()=>{
             setAllPosts(data.data);
             setPosts(data.data);
         })
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 1000);
         // axios.get('http://127.0.0.1:3001/api/photografs').then((data) => {
         //     console.log(data.data)
         //     setPhotografs(data.data);
@@ -89,6 +93,7 @@ const AdminAllPosts=()=>{
 
 
     return <div className={classes.container}>
+        {isLoading && <Preloader/>}
             <div className={classes.profile}>
                 <div className={classes.profile_top}>
                     <Link to="/admin"><button className={classes.post_btn}>Пользователи</button></Link>

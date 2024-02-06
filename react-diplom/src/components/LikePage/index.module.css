@@ -57,3 +57,10 @@
     color: #CFC7BA;
     margin-bottom: 20px;
 }
+
+.post_btn:hover {
+    border-top: 2px solid #CFC7BA;
+    border-right: 2px solid #CFC7BA;
+    border-left: 2px solid #CFC7BA;
+    color: #CFC7BA;
+}

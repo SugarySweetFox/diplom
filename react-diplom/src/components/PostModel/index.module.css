@@ -99,6 +99,7 @@
 .img_like {
     margin-left: auto;
     height: 40px;
+    cursor: pointer;
 }
 
 .filled_btn {
@@ -109,10 +110,18 @@
     color: #CFC7BA;
 }
 
+.filled_btn:hover {
+    background: rgba(132, 89, 70, 0.8);
+}
+
 .img {
     position: absolute;
     width: 245px;
     height: 325px;
     right: -25px;
     bottom: -5px;
+}
+
+.filled_btn:hover {
+    background: rgba(132, 89, 70, 0.8);
 }

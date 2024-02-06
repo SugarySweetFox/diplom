@@ -7,9 +7,10 @@ import PostBeautyMasters from "../PostBeautyMasters";
 import PostModels from "../PostModel";
 import { getUser } from "../../store/storage";
 import FormPage from "../FormPage"; 
+import Preloader from "../Preloader";
 
 const MyPostPage=()=>{
-
+    const [isLoading, setIsLoading] = useState(true);
     const [authUser, setAuthUser] = useState(getUser());
 
     const [postsbeautymasters, setPostsbeautymasters] = useState([])
@@ -34,6 +35,9 @@ const MyPostPage=()=>{
             console.log(data.data)
             setModels(data.data);
         })
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 1000);
     }, []);
 
     const [isActive, setIsActive] = useState(false);
@@ -42,6 +46,7 @@ const MyPostPage=()=>{
 
 
     return <>{isActive&&<FormPage userId={userId} setIsActive={setIsActive}/>}<div className={classes.container}>
+        {isLoading && <Preloader/>}
             <div className={classes.profile}>
                 <div className={classes.profile_top}>
                     <Link to="/profile"><button className={classes.post_btn}>Профиль</button></Link>

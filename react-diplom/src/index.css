@@ -88,10 +88,14 @@ h6, input, ::placeholder {
     line-height: normal;   
 }
 
-/* button {
-    background: #845946;
-    width: 250px;
-    height: 55px;
-    border: none;
-    color: #CFC7BA;
-} */
+button {
+    cursor: pointer;
+} 
+
+input {
+    cursor: pointer;
+}
+
+option {
+    cursor: pointer;
+}

@@ -8,6 +8,10 @@
     color: #CFC7BA;
 }
 
+.center:hover {
+    background: rgba(132, 89, 70, 0.8);
+}
+
 .block_brown {
     background: rgba(132, 89, 70, 0.24);
     box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.07);
