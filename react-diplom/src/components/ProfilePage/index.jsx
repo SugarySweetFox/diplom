@@ -63,7 +63,7 @@ const ProfilePage=()=>{
                                     <h4>{new Date(user?.birthday).toLocaleDateString()}</h4>
                                 </div>
                                 <div className={classes.text_post}>
-                                    <h5>Я:</h5>
+                                    <h5>Деятельность:</h5>
                                     <h4>{user?.activity.name}</h4>
                                 </div>
                                 <div className={classes.text_post}>

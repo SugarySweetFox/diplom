@@ -38,7 +38,7 @@ a.active {
     padding: 5px 10px;
 }
 
-p, button, label {
+p, button, label, span {
     color: #28272C;
     font-family: Raleway;
     font-size: 16px;
