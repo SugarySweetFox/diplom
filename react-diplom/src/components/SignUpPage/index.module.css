@@ -1,4 +1,4 @@
-.center {
+.filled_btn {
     margin: auto;
     margin-top: 20px;
     background: #845946;
@@ -8,7 +8,9 @@
     color: #CFC7BA;
 }
 
-.center:hover {
+
+
+.filled_btn:hover {
     background: rgba(132, 89, 70, 0.8);
 }
 

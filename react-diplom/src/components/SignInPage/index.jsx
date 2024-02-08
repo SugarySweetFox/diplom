@@ -61,7 +61,7 @@ const SignInPage=()=>{
                 </div>
             </div>
 
-        <button className={classes.center} onClick={(e)=>signInForm(e)}>Войти</button>
+        <button className={classes.filled_btn} onClick={(e)=>signInForm(e)}>Войти</button>
     </div>
     </>
 }

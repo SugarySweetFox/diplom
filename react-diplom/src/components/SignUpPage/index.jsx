@@ -140,7 +140,7 @@ const SignUpPage=()=>{
                 </div>
             </div>
 
-        <button className={classes.center} onClick={(e)=>handleSendForm(e)}>Зарегистрироваться</button>
+        <button className={classes.filled_btn} onClick={(e)=>handleSendForm(e)}>Зарегистрироваться</button>
     </div></>
 }
 export default SignUpPage;
