@@ -12,6 +12,7 @@ const LikePage=()=>{
 
     const [isLoading, setIsLoading] = useState(true);
     const [authUser, setAuthUser] = useState(getUser());
+    const [user, setUser] = useState();
 
     const [postsbeautymasters, setPostsbeautymasters] = useState([])
 
@@ -59,7 +60,7 @@ const LikePage=()=>{
             <div className={classes.profile}>
                 <div className={classes.profile_top}>
                     <Link to="/profile"><button className={classes.post_btn}>Профиль</button></Link>
-                    <Link to="/portfolio"><button className={classes.post_btn}>Портфолио</button></Link>
+                    <Link to={`/portfolio/${authUser.id}`}><button className={classes.post_btn}>Портфолио</button></Link>
                     <Link to="/myposts"><button className={classes.post_btn}>Мои объявления</button></Link>
                     <div className={classes.div_first_btn}>
                         <p className={classes.center}>Избранное</p>

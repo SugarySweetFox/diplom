@@ -9,6 +9,7 @@ import LikePage from "../LikePage";
 import AdminPanel from "../AdminPanel"
 import AdminAllPosts from "../AdminAllPosts"
 import AdminAllWorks from "../AdminAllWorks"
+import AdminProtector from "../AdminProtector";
 
 const Routes = ({user, setUser}) => {
     return <RoutesReact>
@@ -22,7 +23,7 @@ const Routes = ({user, setUser}) => {
         <Route path="/like" Component={LikePage} user={user} setUser={setUser}/>
         <Route path="/sign_in" Component={SignInPage} user={user} setUser={setUser}/>
         <Route path="/sign_up" Component={SignUpPage} user={user} setUser={setUser}/>
-        <Route path="/admin" Component={AdminPanel} user={user}/>
+        <Route path="/admin" element={<AdminProtector><AdminPanel/></AdminProtector>} user={user}/>
         <Route path="/admin_posts" Component={AdminAllPosts} user={user}/>
         <Route path="/admin_works" Component={AdminAllWorks} user={user}/>
     </RoutesReact>

@@ -40,7 +40,7 @@ const ProfilePage=()=>{
                     <div className={classes.div_first_btn}>
                         <p className={classes.center}>Профиль</p>
                     </div>
-                    <Link to="/portfolio"><button className={classes.post_btn}>Портфолио</button></Link>
+                    <Link to={`/portfolio/${authUser.id}`}><button className={classes.post_btn}>Портфолио</button></Link>
                     <Link to="/myposts"><button className={classes.post_btn}>Мои объявления</button></Link>
                     <Link to="/like"><button className={classes.post_btn}>Избранное</button></Link>
                 </div>

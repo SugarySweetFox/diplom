@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import like from "../../img/imagee.png";
 import { getUser } from "../../store/storage";
 import Preloader from "../Preloader";
+
 const PortfolioPage=()=>{
 
     let picInput = useRef(null);
@@ -16,7 +17,7 @@ const PortfolioPage=()=>{
     const [picture, setPicture] = useState();
 
     const [userId, setUserId] = useState(getUser().id);
-    const [isAuthor, setIsAuthor] = useState(userId === +userIdParams);
+    const [isAuthor, setIsAuthor] = useState(userId ? userId === +userIdParams : false);
 
     const [works, setWorks] = useState([
         {

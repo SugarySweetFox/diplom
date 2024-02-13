@@ -5,6 +5,7 @@ import  classes from "./index.module.css";
 import {Context} from "../../index.jsx"
 import { jwtDecode } from "jwt-decode";
 import { getUser, setUser } from "../../store/storage";
+import { useNavigate } from "react-router-dom";
 
 
 const SignInPage=()=>{
@@ -15,7 +16,7 @@ const SignInPage=()=>{
     const [isActive, setIsActive] = useState(false);
 
     const [popUpMessage, setPopUpMessage] = useState("");
-
+const navigate = useNavigate();
     const signInForm = (e) => {
         e.preventDefault();
         axios.post('http://127.0.0.1:3001/auth/login', {
@@ -32,13 +33,14 @@ const SignInPage=()=>{
             user.token = data.data.token;
             user.id = jwtDecode(data.data.token).id;
             user.login = jwtDecode(data.data.token).login;
-            user.role = jwtDecode(data.data.token).role;
+            user.role = jwtDecode(data.data.token).role_id;
             console.log('jwtDecode->', jwtDecode(data.data.token));
             setUser(user);
             localStorage.setItem('token', data.data.token)
             setIsActive(true)
             console.log('user->', getUser());
             console.log('=====auth end=====');
+
            
         }).catch(data=>{
             console.log(data);

@@ -12,6 +12,7 @@ import Preloader from "../Preloader";
 const MyPostPage=()=>{
     const [isLoading, setIsLoading] = useState(true);
     const [authUser, setAuthUser] = useState(getUser());
+    const [user, setUser] = useState();
 
 
     function refreshPosts(){
@@ -67,7 +68,7 @@ const MyPostPage=()=>{
             <div className={classes.profile}>
                 <div className={classes.profile_top}>
                     <Link to="/profile"><button className={classes.post_btn}>Профиль</button></Link>
-                    <Link to="/portfolio"><button className={classes.post_btn}>Портфолио</button></Link>
+                    <Link to={`/portfolio/${authUser.id}`}><button className={classes.post_btn}>Портфолио</button></Link>
                     <div className={classes.div_first_btn}>
                         <p className={classes.center}>Ваши объявления</p>
                     </div>

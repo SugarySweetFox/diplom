@@ -35,3 +35,14 @@
 .white {
     color: #CFC7BA;
 }
+
+@media screen and (max-width: 930px) {
+    .menu_footer {
+        display: none;
+       
+    }
+
+    .left_footer {
+        flex-direction: column;
+    }
+}

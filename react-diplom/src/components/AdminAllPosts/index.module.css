@@ -15,6 +15,12 @@
 
 }
 
+@media screen and (max-width: 920px) {
+    .profile{
+        width: 100%;
+    }
+}
+
 .profile_top {
     display: flex;
     flex-direction: row;
@@ -87,4 +93,20 @@
     border-right: 2px solid #CFC7BA;
     border-left: 2px solid #CFC7BA;
     color: #CFC7BA;
+}
+
+@media screen and (max-width: 930px) {
+    .post_btn {
+        width: 70px;
+    }
+
+    .div_first_btn {
+        width: 100%;
+        max-width: 190px;
+    }
+
+    .filter {
+        flex-direction: column;
+        gap: 20px;
+    }
 }

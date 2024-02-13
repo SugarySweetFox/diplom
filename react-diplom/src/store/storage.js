@@ -5,8 +5,9 @@ const setLocalStorage = (name, value) => {
 
 //id login token
 const setUser = (user) => {
+    console.log('user->', user);
     setLocalStorage('user', JSON.stringify(user));
-    // window.location.href = '/';
+    window.location.href = '/';
 }
 
 const removeUser = () => {
@@ -18,4 +19,20 @@ const getUser=()=>{
     return JSON.parse(localStorage.getItem('user'));
 }
 
-export {setUser, getUser, removeUser}
+const isAdmin = () => {
+    if(getUser() == null) return false;
+    if (getUser().role && getUser().role === 1) {
+            return true
+        }   
+    // if(getUser() != null || getUser()?.role) {
+        
+    // } else ;
+    // if (!getUser().role) return false
+    // if (getUser().role && getUser().role === 1) {
+    //     return true
+    // } else {
+    //     return false
+    // }
+}
+
+export {setUser, getUser, removeUser, isAdmin}

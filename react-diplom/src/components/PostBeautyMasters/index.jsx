@@ -74,7 +74,7 @@ const PostModels=({name, city, search, about, user, service, picture, post_id, r
                     {!!authUser && !isAuthor ? <><img src={checkLike(likes, authUser.id) ? likeImgActive : likeImg} alt="" onClick={ checkLike(likes, authUser.id) ? () => {dislike(post_id,  authUser.id); refreshPosts()} : () => {like(post_id,  authUser.id); refreshPosts()}} className={classes.img_like}/> 
                         <span>{likes?.length}</span>
                         </>:false}
-                    </div>
+                </div>
                 <div className={classes.bottom_post}>
                     {authUser ?  <> <Link to={`/portfolio/${user.id}`}><button className={classes.border_btn}>Портфолио</button></Link> </> : <></>}
                     {authUser ?  <> <button className={classes.filled_btn}>Написать</button></> : <></>}
