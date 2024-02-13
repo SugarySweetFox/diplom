@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import  classes from "./index.module.css";
 import axios from 'axios';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import like from "../../img/imagee.png";
 import { getUser } from "../../store/storage";
@@ -9,10 +9,14 @@ import Preloader from "../Preloader";
 const PortfolioPage=()=>{
 
     let picInput = useRef(null);
+
+    let { userIdParams } = useParams();
+
     const [isLoading, setIsLoading] = useState(true);
     const [picture, setPicture] = useState();
 
     const [userId, setUserId] = useState(getUser().id);
+    const [isAuthor, setIsAuthor] = useState(userId === +userIdParams);
 
     const [works, setWorks] = useState([
         {
@@ -107,6 +111,7 @@ const PortfolioPage=()=>{
                 </div>
                 <div className={classes.profile_div}>
                         <h3>Лучшие работы</h3>
+                        <h2>{isAuthor ? "Автор" : "Не автор"}</h2>
                         <div className={classes.best_work}>
                             {
                                 works.map((work)=>{
@@ -120,14 +125,16 @@ const PortfolioPage=()=>{
                             }                           
                         </div>
                         <div className={classes.all_work}>
+                        {isAuthor ?  <>  
                             <label htmlFor="file">
                                 <div className={classes.add_work}><h1 className={classes.white}>+</h1></div>
                                 <input className={classes.file} id="file" type="file" ref={picInput} onChange={handleUpload}/>
                              </label>
+                        </> : <></>}
                             
                             {
                                 works.map((work)=>{
-                                    return <div className={classes.work}><img className={classes.work} src={"http://localhost:3001/" + work.picture} alt="" /><div className={classes.exit} onClick={() => {delitee(work?.id)}}>X</div></div>
+                                    return <div className={classes.work}><img className={classes.work} src={"http://localhost:3001/" + work.picture} alt="" />{isAuthor ?  <> <div className={classes.exit} onClick={() => {delitee(work?.id)}}>X</div></> : <></>}</div>
                                 })
                             }
                         </div>

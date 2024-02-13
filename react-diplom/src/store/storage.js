@@ -6,7 +6,7 @@ const setLocalStorage = (name, value) => {
 //id login token
 const setUser = (user) => {
     setLocalStorage('user', JSON.stringify(user));
-    window.location.href = '/';
+    // window.location.href = '/';
 }
 
 const removeUser = () => {

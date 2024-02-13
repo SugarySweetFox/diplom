@@ -4,18 +4,18 @@ import  classes from "./index.module.css";
 import bsCustomFileInput from 'bs-custom-file-input';
 
 
-const FormPage=({setIsActive, userId})=>{
+const FormPage=({setIsActive, userId,  refreshPosts})=>{
     
     //Инпут фото
     let picInput = useRef(null);
 
-    const [name, setName] = useState();
+    const [name, setName] = useState("");
 
-    const [about, setAbout] = useState();
+    const [about, setAbout] = useState("");
 
     const [picture, setPicture] = useState();
 
-    const [choosedCity, setChoosedCity] = useState('1');
+    const [choosedCity, setChoosedCity] = useState(1);
 
     const [city, setCity] = useState([
         {
@@ -23,7 +23,7 @@ const FormPage=({setIsActive, userId})=>{
         }
     ]);
 
-    const [choosedService, setChoosedService] = useState('0');
+    const [choosedService, setChoosedService] = useState(0);
 
     const [service, setService] = useState([
         {
@@ -31,7 +31,7 @@ const FormPage=({setIsActive, userId})=>{
         }
     ]);
 
-    const [choosedType, setChoosedType] = useState('0');
+    const [choosedType, setChoosedType] = useState(0);
 
     const [type, setType] = useState([
         {
@@ -40,7 +40,7 @@ const FormPage=({setIsActive, userId})=>{
     ]);
 
 
-    const [choosedSearch, setChoosedSearch] = useState('1');
+    const [choosedSearch, setChoosedSearch] = useState(1);
 
     const [search, setSearch] = useState([
         {
@@ -48,7 +48,7 @@ const FormPage=({setIsActive, userId})=>{
         }
     ]);
     
-    const [choosedActivity, setChoosedActivity] = useState('1');
+    const [choosedActivity, setChoosedActivity] = useState(1);
 
     const [activity, setActivity] = useState([
         {
@@ -93,8 +93,15 @@ const FormPage=({setIsActive, userId})=>{
         formData.append('name', name)
         formData.append('city_id', choosedCity)
         formData.append('activities_id', choosedActivity)
-        formData.append('type_id', choosedType > 0 ? choosedType : null)
-        formData.append('service_id', choosedService > 0 ? choosedService : null)
+        
+        if (choosedType){
+            formData.append('type_id', choosedType)
+            
+        }
+        if (choosedService){
+            formData.append('service_id', choosedService)
+        }
+
         formData.append('search_id', choosedSearch)
         formData.append('about_me', about)
         formData.append('user_id', userId )
@@ -107,6 +114,8 @@ const FormPage=({setIsActive, userId})=>{
             headers: { "Content-Type": "multipart/form-data" },
           })
             .then(function (response) {
+                refreshPosts();
+                setIsActive(false)
               //handle success
               console.log(response);
             })
@@ -172,7 +181,7 @@ const FormPage=({setIsActive, userId})=>{
                 <div className={classes.input}>
                     <p>Какие услуги предоставляете?</p>
                     <select className={classes.select} value={choosedService} onChange={(e)=>{setChoosedService(e.target.value)}} name="" id="">
-                        <option className={classes.option} value={'0'}>Нет</option>
+                        <option className={classes.option} value={0}>Нет</option>
                         {
                             service.map((service=>{
                                 return <option className={classes.option} value={service.id}>{service.name}</option>
@@ -183,7 +192,7 @@ const FormPage=({setIsActive, userId})=>{
                 <div className={classes.input}>
                     <p>Какой тип съемки?</p>
                     <select className={classes.select} value={choosedType} onChange={(e)=>{setChoosedType(e.target.value)}} name="" id="">
-                        <option className={classes.option} value={'0'}>Нет</option>
+                        <option className={classes.option} value={0}>Нет</option>
                         {
                             type.map((type=>{
                                 return <option className={classes.option} value={type.id}>{type.name}</option>

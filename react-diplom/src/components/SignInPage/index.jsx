@@ -28,10 +28,12 @@ const SignInPage=()=>{
             console.log(data);
             setPopUpMessage(data.data.message)
             //decode 
-            let user = {id: '', login: '', token: ''}
+            let user = {id: '', login: '', role: '', token: ''}
             user.token = data.data.token;
             user.id = jwtDecode(data.data.token).id;
             user.login = jwtDecode(data.data.token).login;
+            user.role = jwtDecode(data.data.token).role;
+            console.log('jwtDecode->', jwtDecode(data.data.token));
             setUser(user);
             localStorage.setItem('token', data.data.token)
             setIsActive(true)

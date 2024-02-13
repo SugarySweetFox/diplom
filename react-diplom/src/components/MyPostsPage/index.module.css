@@ -58,6 +58,13 @@
     margin-bottom: 20px;
 }
 
+.profile_div_t {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 20px;
+}
+
+
 .post_btn:hover {
     border-top: 2px solid #CFC7BA;
     border-right: 2px solid #CFC7BA;

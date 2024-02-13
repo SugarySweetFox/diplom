@@ -13,6 +13,23 @@ const MyPostPage=()=>{
     const [isLoading, setIsLoading] = useState(true);
     const [authUser, setAuthUser] = useState(getUser());
 
+
+    function refreshPosts(){
+        axios.get('http://127.0.0.1:3001/api/beautymasters').then((data) => {
+            console.log(data.data)
+            setPostsbeautymasters(data.data);
+        })
+        axios.get('http://127.0.0.1:3001/api/photografs').then((data) => {
+            console.log(data.data)
+            setPhotografs(data.data);
+        })
+        axios.get('http://127.0.0.1:3001/api/models').then((data) => {
+            console.log(data.data)
+            setModels(data.data);
+        })
+        
+    }
+
     const [postsbeautymasters, setPostsbeautymasters] = useState([])
 
     const [postsphotografs, setPhotografs] = useState([])
@@ -45,7 +62,7 @@ const MyPostPage=()=>{
 
 
 
-    return <>{isActive&&<FormPage userId={userId} setIsActive={setIsActive}/>}<div className={classes.container}>
+    return <>{isActive&&<FormPage userId={userId} setIsActive={setIsActive}  refreshPosts={refreshPosts}/>}<div className={classes.container}>
         {isLoading && <Preloader/>}
             <div className={classes.profile}>
                 <div className={classes.profile_top}>
@@ -60,15 +77,17 @@ const MyPostPage=()=>{
                     <div className={classes.center}>
                         <button className={classes.filled_btn} onClick={(e)=>setIsActive(true)}>Добавить</button>
                     </div>
-                    {userId && postsbeautymasters.map((post) => {
-                        return post.user.id === userId ? <PostBeautyMasters name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} service={post.service?.name}  about={post.about_me}/> : false
-                    })}
-                    {userId && postsphotografs.map((post) => {
-                        return post.user.id === userId ? <PostPhotografs name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} type={post.type?.name} about={post.about_me}/> : false
-                    })}
-                    {userId && postsmodels.map((post) => {
-                        return post.user.id === userId ? <PostModels name={post.name} picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} type={post.type?.name} age={post.user.birthday} about={post.about_me}/> : false 
-                    })}
+                    <div className={classes.profile_div_t}>
+                        {userId && postsbeautymasters.map((post) => {
+                            return post.user.id === userId ? <PostBeautyMasters refreshPosts={refreshPosts} post_id={post.id} name={post.name} picture={post.picture} user={post.user} city={post.city.name} search={post.search.name} service={post.service?.name}  about={post.about_me}/> : false
+                        })}
+                        {userId && postsphotografs.map((post) => {
+                            return post.user.id === userId ? <PostPhotografs refreshPosts={refreshPosts} post_id={post.id} name={post.name} picture={post.picture} user={post.user} city={post.city.name} search={post.search.name} type={post.type?.name} about={post.about_me}/> : false
+                        })}
+                        {userId && postsmodels.map((post) => {
+                            return post.user.id === userId ? <PostModels refreshPosts={refreshPosts} post_id={post.id} name={post.name} picture={post.picture} user={post.user} city={post.city.name} search={post.search.name} type={post.type?.name} age={post.user.birthday} about={post.about_me}/> : false 
+                        })}
+                    </div>
                 </div>              
             </div>            
         </div>

@@ -5,10 +5,11 @@ import jwt from 'jsonwebtoken'
 import {validationResult} from 'express-validator'
 import secret from '../config.js'
 
-const generateAccessToken = (id, login) => {
+const generateAccessToken = (id, login, role_id) => {
     const payload = {
         id,
-        login
+        login,
+        role_id
     }
     return jwt.sign(payload, secret.secret, {expiresIn: '24h'})
 }
@@ -56,7 +57,7 @@ class authController {
             if (!validPassword) {
                 return res.status(400).json({message: 'Неверный пароль'})
             }
-            const token = generateAccessToken(user.id, user.login);
+            const token = generateAccessToken(user.id, user.login, user.role_id);
 
             return res.json({token})
         } catch (e) {
