@@ -47,3 +47,17 @@
     justify-content: center;
 }
 
+@media screen and (max-width: 930px) {
+    .line {
+        height: 130px;
+    }
+
+    .filter {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .container {
+        width: 100%;
+    }
+}

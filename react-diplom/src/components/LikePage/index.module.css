@@ -64,3 +64,27 @@
     border-left: 2px solid #CFC7BA;
     color: #CFC7BA;
 }
+
+@media screen and (max-width: 930px) {
+    .post_btn {
+        width: 70px;
+    }
+
+    .div_first_btn {
+        width: 100%;
+        max-width: 190px;
+    }
+
+    .filter {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .profile_div {
+        padding: 20px 10px
+    }
+
+    .profile {
+        width: 90%;
+    }
+}

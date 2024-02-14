@@ -27,7 +27,7 @@
     margin-bottom: 100px;
 }
 
-input, .select, .option {
+.select, .option {
     background: rgba(207, 199, 186, 0.40);
     width: 400px;
     height: 20px;
@@ -58,4 +58,23 @@ input, .select, .option {
     display: flex;
     flex-direction: column;
     gap: 5px;
+}
+
+@media screen and (max-width: 930px) {
+    .block_brown {
+        padding: 40px 20px;
+        width: auto;
+    }
+
+    .input {
+        width: 90%;
+    }
+
+    .select {
+        width: 100%;
+    }
+
+    .inputs {
+        width: 90%;
+    }
 }

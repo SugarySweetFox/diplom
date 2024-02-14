@@ -103,6 +103,21 @@ h6, input, ::placeholder {
     line-height: normal;   
 }
 
+input {
+    background: rgba(207, 199, 186, 0.40);
+    width: 400px;
+    height: 20px;
+    margin: 0 auto;
+    border: none;
+    padding: 14px 20px;
+    color: #544F4C;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal; 
+}
+
 button {
     cursor: pointer;
 } 
@@ -115,3 +130,100 @@ option {
     cursor: pointer;
 }
 
+@media screen and (max-width: 930px) {
+    a {
+        text-decoration: none;
+        color: #28272C;
+        font-family: Raleway;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        /* padding: 5px 10px; */
+    
+        transition: .3s;
+    }
+    
+    a:hover {
+        font-weight: 600;
+        color: #845946;
+    }
+    
+    a.active {
+        font-weight: 600;
+        color: #845946;
+        border-bottom: 2px solid #845946;
+        padding: 5px 10px;
+    }
+    
+    p, button, label, span {
+        color: #28272C;
+        font-family: Raleway;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        line-height: 150%;
+    }
+    
+    h1 {
+        color: #28272C;
+        font-family: Playfair Display;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+    }
+    
+    h2 {
+        color: #28272C;
+        font-family: Playfair Display;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 400;
+    }
+    
+    h3 {
+        color: #28272C;
+        font-family: Playfair Display;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        text-align: center;
+    }
+    
+    h4 {
+        color: #28272C;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 150%;
+    }
+    
+    h5 {
+        color: #28272C;
+        font-family: Raleway;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+    }
+    
+    h6, input, ::placeholder {
+        color: #544F4C;
+        font-family: Raleway;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;   
+    }
+
+    input, select, option {
+        width: 100%;
+        padding: 10px;
+    }
+
+}

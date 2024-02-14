@@ -63,3 +63,25 @@
 .grey {
     color: #544F4C;
 }
+
+@media screen and (max-width: 930px) {
+    .site_index {
+        flex-direction: column-reverse;
+        gap: 20px
+    }
+
+    .right_index {
+        width: 100%;
+    }
+
+    .left_index {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+
+    .iti {
+        margin: 40px auto;
+        gap: 8px;
+    }
+}

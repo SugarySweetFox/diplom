@@ -40,7 +40,7 @@
     transform: translate(-50%, -50%);
 }
 
-input, .select, .option {
+.select, .option {
     background: rgba(207, 199, 186, 0.40);
     width: 400px;
     height: 20px;
@@ -98,4 +98,31 @@ input, .select, .option {
     border: 2px solid #CFC7BA;
     color: #CFC7BA;
     background: none;
+}
+
+@media screen and (max-width: 930px) {
+    .block {
+        padding: 20px;
+        margin-top: 20px;
+        width: 80%;
+        gap: 10px
+    }
+
+    .inputs {
+        flex-direction: column;
+        width: 90%;
+        gap: 10px;
+
+    }
+
+    .input, .file_active {
+        width: 90%;
+    }
+
+    .file_active {
+        padding: 10px;
+    }
+    .select {
+        width: 100%;
+    }
 }

@@ -109,4 +109,8 @@
         flex-direction: column;
         gap: 20px;
     }
+    
+    .profile_div {
+        padding: 10px;
+    }
 }

@@ -171,4 +171,12 @@ table {
         max-width: 190px;
     }
 
+    th {
+        font-size: 18px;
+    }
+    
+    td {
+        font-size: 16px;
+    }
+
 }

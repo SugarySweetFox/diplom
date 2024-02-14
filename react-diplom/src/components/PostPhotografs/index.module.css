@@ -121,3 +121,42 @@
 .filled_btn:hover {
     background: rgba(132, 89, 70, 0.8);
 }
+
+@media screen and (max-width: 930px) {
+    .bottom_post {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .post {
+        width: auto;
+        padding: 10px;
+    }
+
+    .div_okr, .div_border {
+        display: none;
+    }
+
+    .top_post {
+        flex-direction: column;
+    }
+
+    .img {
+        right: auto;
+    }
+
+    .img_like {
+        position: absolute;
+        right: 10px;
+    }
+
+    .photo {
+        margin-right: 0;
+    }
+
+    .content {
+        width: auto;
+        margin-top: 20px;
+    }
+}

@@ -111,20 +111,7 @@ const PortfolioPage=()=>{
                     <Link to="/like"><button className={classes.post_btn}>Избранное</button></Link>
                 </div>
                 <div className={classes.profile_div}>
-                        <h3>Лучшие работы</h3>
-                        <h2>{isAuthor ? "Автор" : "Не автор"}</h2>
-                        <div className={classes.best_work}>
-                            {
-                                works.map((work)=>{
-                                    if (work.favorite)
-                                    return <div className={classes.photo}>
-                                    <div className={classes.div_okr}></div>
-                                    <img className={classes.img} src={"http://localhost:3001/" + work.picture} alt="" />
-                                    <div className={classes.div_border}></div>
-                                    </div>
-                                })
-                            }                           
-                        </div>
+                        
                         <div className={classes.all_work}>
                         {isAuthor ?  <>  
                             <label htmlFor="file">

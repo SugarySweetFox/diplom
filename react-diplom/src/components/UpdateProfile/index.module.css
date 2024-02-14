@@ -47,7 +47,7 @@
     transform: translate(-50%, -50%);
 }
 
-input, .select, .option {
+.select, .option {
     background: rgba(207, 199, 186, 0.40);
     width: 400px;
     height: 20px;
