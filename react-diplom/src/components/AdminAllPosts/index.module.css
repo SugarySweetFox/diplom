@@ -5,6 +5,10 @@
     margin: 0 auto;
 }
 
+.container {
+    min-height: 55vh;
+}
+
 .left {
     text-align: left;
 }

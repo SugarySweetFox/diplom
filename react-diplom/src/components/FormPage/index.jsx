@@ -13,6 +13,8 @@ const FormPage=({setIsActive, userId,  refreshPosts})=>{
 
     const [about, setAbout] = useState("");
 
+    const [count, setCount] = useState("");
+
     const [picture, setPicture] = useState();
 
     const [choosedCity, setChoosedCity] = useState(1);
@@ -104,6 +106,7 @@ const FormPage=({setIsActive, userId,  refreshPosts})=>{
 
         formData.append('search_id', choosedSearch)
         formData.append('about_me', about)
+        formData.append('count', count)
         formData.append('user_id', userId )
 
         
@@ -203,7 +206,11 @@ const FormPage=({setIsActive, userId,  refreshPosts})=>{
                 <div className={classes.input}>
                     <p>О себе:</p>
                     <input type="text" placeholder="Название" value={about} onChange={(e)=>{setAbout(e.target.value)}} /> 
-                </div>                
+                </div>   
+                <div className={classes.input}>
+                    <p>Cтоимость:</p>
+                    <input type="text" placeholder="Название" value={count} onChange={(e)=>{setAbout(e.target.value)}} /> 
+                </div>              
                 </div>
             </div>
 

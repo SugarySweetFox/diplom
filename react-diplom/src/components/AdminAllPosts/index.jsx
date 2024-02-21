@@ -19,7 +19,21 @@ const AdminAllPosts=()=>{
 
     const [postsmodels, setModels] = useState([])
 
-
+    function refreshPosts(){
+        axios.get('http://127.0.0.1:3001/api/beautymasters').then((data) => {
+            console.log(data.data)
+            setPostsbeautymasters(data.data);
+        })
+        axios.get('http://127.0.0.1:3001/api/photografs').then((data) => {
+            console.log(data.data)
+            setPhotografs(data.data);
+        })
+        axios.get('http://127.0.0.1:3001/api/models').then((data) => {
+            console.log(data.data)
+            setModels(data.data);
+        })
+        
+    }
 
     useEffect(() => {
         axios.get('http://127.0.0.1:3001/api/posts').then((data) => {
@@ -126,9 +140,9 @@ const AdminAllPosts=()=>{
                     {
                         posts.map((post) => {
                             switch(post.activities_id){
-                                case 3: return <PostBeautyMasters name={post.name}  picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} service={post.service?.name}  about={post.about_me}/>
-                                case 2: return <PostPhotografs name={post.name}  picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} type={post.type?.name} about={post.about_me}/>
-                                case 1: return <PostModels name={post.name}  picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name}  age={post.user.birthday} about={post.about_me}/>
+                                case 3: return <PostBeautyMasters  refreshPosts={refreshPosts} name={post.name} post_id={post.id}  picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} service={post.service?.name}  about={post.about_me}/>
+                                case 2: return <PostPhotografs  refreshPosts={refreshPosts} name={post.name} post_id={post.id}  picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name} type={post.type?.name} about={post.about_me}/>
+                                case 1: return <PostModels  refreshPosts={refreshPosts} name={post.name} post_id={post.id}  picture={post.picture} user={post.user.name} city={post.city.name} search={post.search.name}  age={post.user.birthday} about={post.about_me}/>
                             }
                         })
                     }

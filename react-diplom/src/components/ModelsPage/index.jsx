@@ -142,7 +142,7 @@ const ModelsPage=()=>{
         <div className={classes.container}>
             {posts.map((post) => {
                 console.log(post);
-                return <PostModels refreshPosts={refreshPosts} name={post.name} picture={post.picture} user={post.user} post_id={post.id} city={post.city.name} search={post.search.name}  age={post.user.birthday} about={post.about_me} likes={post.likes}/>
+                return <PostModels refreshPosts={refreshPosts} count={post.count} name={post.name} picture={post.picture} user={post.user} post_id={post.id} city={post.city.name} search={post.search.name}  age={post.user.birthday} about={post.about_me} likes={post.likes}/>
             })}
             
             

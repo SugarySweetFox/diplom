@@ -29,6 +29,15 @@ class WorkController {
             res.status(500).send(e.toString())
         }
     }
+    async getByUserId(req, res) {
+        try {
+            const works = await WorkService.getByUserId(req.params.id);
+            return res.json(works);
+        } catch (e) {
+
+            res.status(500).json(e)
+        }
+    }
 }
 
 export default new WorkController();

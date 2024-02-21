@@ -35,6 +35,7 @@ router.delete('/users/:id', UserController.delete)
 // WORK
 router.post('/works', WorkController.create)
 router.get('/works', WorkController.getAll)
+router.get('/works/:id', WorkController.getByUserId)
 router.delete('/works/:id', WorkController.delete)
 
 // TYPE

@@ -3,13 +3,13 @@ import likeImg from "../../img/like.svg";
 import delite from "../../img/delete.svg";
 import likeImgActive from "../../img/like_active.svg"
 import { useEffect, useState } from "react";
-import { getUser } from "../../store/storage";
+import { getUser, isAdmin } from "../../store/storage";
 import axios from "axios";
 import nophoto from "../../img/nophoto.png";
 import { checkLike, dislike, like } from "../../utils/likes";
 import { Link } from "react-router-dom";
 
-const PostModels=({name, city, search, about, user, service, picture, post_id, refreshPosts, likes})=>{
+const PostModels=({name, city, search, about, user, service, picture, post_id, refreshPosts, likes, count})=>{
     const [authUser, setAuthUser] = useState(getUser())
   
     const [isAuthor, setIsAuthor] = useState();
@@ -68,10 +68,14 @@ const PostModels=({name, city, search, about, user, service, picture, post_id, r
                                 <h5>О себе:</h5>
                                 <h4 className={classes.left}>{about}</h4>
                             </div>
+                            <div className={classes.text_post}>
+                                <h5>Стоимтость:</h5>
+                                <h5 className={classes.left}>{count}</h5>
+                            </div>
                         </div>
                     </div>
-                    {isAuthor ? <img onClick={() => {delitee(post_id)}} src={delite} className={classes.img_like}/>  : false}
-                    {!!authUser && !isAuthor ? <><img src={checkLike(likes, authUser.id) ? likeImgActive : likeImg} alt="" onClick={ checkLike(likes, authUser.id) ? () => {dislike(post_id,  authUser.id); refreshPosts()} : () => {like(post_id,  authUser.id); refreshPosts()}} className={classes.img_like}/> 
+                    {isAuthor || isAdmin() ? <img onClick={() => {delitee(post_id)}} src={delite} className={classes.img_like}/>  : false}
+                    {!!authUser && !isAuthor && !isAdmin() ? <><img src={checkLike(likes, authUser.id) ? likeImgActive : likeImg} alt="" onClick={ checkLike(likes, authUser.id) ? () => {dislike(post_id,  authUser.id); refreshPosts()} : () => {like(post_id,  authUser.id); refreshPosts()}} className={classes.img_like}/> 
                         <span>{likes?.length}</span>
                         </>:false}
                 </div>

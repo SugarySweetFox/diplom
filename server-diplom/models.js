@@ -262,6 +262,10 @@ const Post = sequelize.define("post", {
     service_id: {
         type: Sequelize.INTEGER,
         allowNull: true
+    },
+    count: {
+        type: Sequelize.STRING,
+        allowNull: true
     }
 })
 

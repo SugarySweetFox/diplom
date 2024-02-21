@@ -100,7 +100,7 @@ const BeautyMastersPage=()=>{
     </div>
         <div className={classes.container}>
             {posts.map((post) => {
-                return <PostBeautyMasters likes={post.likes} refreshPosts={refreshPosts} name={post.name} picture={post.picture} user={post.user} post_id={post.id} city={post.city.name} search={post.search.name} service={post.service.name}  about={post.about_me}/>
+                return <PostBeautyMasters likes={post.likes} count={post.count} refreshPosts={refreshPosts} name={post.name} picture={post.picture} user={post.user} post_id={post.id} city={post.city.name} search={post.search.name} service={post.service.name}  about={post.about_me}/>
             })}
             
             

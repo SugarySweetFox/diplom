@@ -14,6 +14,13 @@ class WorkService {
         return works;
     }
 
+    async getByUserId (id) {
+        const works = await Work.findAll({where: {
+            user_id: id
+        }});
+        return works;
+    }
+
     async delete(id) {
             if (!id) {
                 res.status(400).json({message: 'Id не указан'})

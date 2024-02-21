@@ -39,7 +39,7 @@ const PortfolioPage=()=>{
     ]);
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:3001/api/works').then((data) => {
+        axios.get(`http://127.0.0.1:3001/api/works/${userIdParams}`).then((data) => {
             console.log(data.data)
             setWorks(data.data);
         })
