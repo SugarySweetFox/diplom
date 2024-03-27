@@ -4,6 +4,50 @@ import {sequelize} from './db.js'
 
 
 
+const Chat = sequelize.define("chat", {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false
+    }
+});
+
+const Message = sequelize.define("message", {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false
+    },
+    chat_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    content: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    time: {
+        type: Sequelize.DATE,
+        allowNull: false
+    },
+    user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    }
+
+});
+
+const ChatMembers = sequelize.define("chatMembers", {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false
+    }
+});
+
 const Work = sequelize.define("work", {
     id: {
         type: Sequelize.INTEGER,
@@ -341,6 +385,19 @@ Like.belongsTo(Post, {
     onDelete: 'cascade'
 });
 
+// Message
+
+Message.belongsTo(User, {
+    foreignKey: 'user_id',
+    targetKey: 'id',
+    onDelete: 'cascade'
+});
+Message.belongsTo(Post, {
+    foreignKey: 'chat_id',
+    targetKey: 'id',
+    onDelete: 'cascade'
+});
+
 
 
 // Work
@@ -351,7 +408,11 @@ Work.belongsTo(User, {
     onDelete: 'cascade'
 });
 
+// Chat and Users
+
+User.belongsToMany(Chat, {through: ChatMembers});
+Chat.belongsToMany(User, {through: ChatMembers});
 
 
 
-export  { Post, User, Work, Role, Like, Gender, City, Activities, Type, Search, Service }
+export  { Post, User, Work, Role, Like, Gender, City, Activities, Type, Search, Service, Chat, ChatMembers, Message }

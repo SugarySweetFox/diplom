@@ -23,10 +23,6 @@ async function startApp() {
 
          //{force: true}
 
-
-
-
-
             app.listen(PORT, function(){
               console.log("Сервер ожидает подключения...");
             });
