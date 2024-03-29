@@ -22,7 +22,9 @@ const TopMenu = ({user, setUser}) => {
                 links.map(l => <NavLink to={l.url} key={l.name} >{l.name}</NavLink>)
             }
             { isAdmin() ? <NavLink to="/admin">Админ панель</NavLink> : <></> }
+            { !isAdmin() && user ? <NavLink to="/message">Сообщения</NavLink> : <></> }
             { !isAdmin() && user ? <NavLink to="/profile">Профиль</NavLink> : <></> }
+            
            {!user ?  <><NavLink to="/sign_in">Вход</NavLink>
             <NavLink to="/sign_up">Регистрация</NavLink></> : <><Link onClick={(e)=>{e.preventDefault(); removeUser(); setUser(null)}}>Выйти</Link></>}
 
