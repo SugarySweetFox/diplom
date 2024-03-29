@@ -16,3 +16,49 @@
     align-items: center;
     margin-bottom: 40px;
 }
+
+.top_text {
+    margin-right: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.block_text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.block_top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.img_o {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    margin-right: 40px;
+}
+
+.line {
+    height: 1px;
+    margin-left: 80px;
+    background-color: #CFC7BA;
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
