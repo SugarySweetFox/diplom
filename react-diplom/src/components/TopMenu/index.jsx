@@ -23,6 +23,7 @@ const TopMenu = ({user, setUser}) => {
             }
             { isAdmin() ? <NavLink to="/admin">Админ панель</NavLink> : <></> }
             { !isAdmin() && user ? <NavLink to="/message">Сообщения</NavLink> : <></> }
+            { !isAdmin() && user ? <NavLink to="/chat">Chat</NavLink> : <></> }
             { !isAdmin() && user ? <NavLink to="/profile">Профиль</NavLink> : <></> }
             
            {!user ?  <><NavLink to="/sign_in">Вход</NavLink>

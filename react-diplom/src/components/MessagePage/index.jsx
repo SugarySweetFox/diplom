@@ -6,7 +6,10 @@ import Preloader from "../Preloader";
 
 
 const MessagePage=()=>{
+
+
     return <>
+
         <div className={classes.block_brown}>
             <h3 className={classes.center}>Мои сообщения</h3>
             <div className={classes.message}>

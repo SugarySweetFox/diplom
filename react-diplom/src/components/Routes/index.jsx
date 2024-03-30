@@ -11,6 +11,7 @@ import AdminAllPosts from "../AdminAllPosts"
 import AdminAllWorks from "../AdminAllWorks"
 import AdminProtector from "../AdminProtector";
 import MessagePage from "../MessagePage";
+import ChatPage from "../ChatPage";
 
 const Routes = ({user, setUser}) => {
     return <RoutesReact>
@@ -21,6 +22,7 @@ const Routes = ({user, setUser}) => {
         <Route path="/portfolio/:userIdParams" Component={PortfolioPage} user={user} setUser={setUser}/>
         <Route path="/profile" Component={ProfilePage} user={user} setUser={setUser}/>
         <Route path="/message" Component={MessagePage} user={user} setUser={setUser}/>
+        <Route path="/chat" Component={ChatPage} user={user} setUser={setUser}/>
         <Route path="/myposts" Component={MyPostsPage} user={user} setUser={setUser}/>
         <Route path="/like" Component={LikePage} user={user} setUser={setUser}/>
         <Route path="/sign_in" Component={SignInPage} user={user} setUser={setUser}/>
