@@ -3,27 +3,29 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Preloader from "../Preloader";
 import arr from "../../img/arrow.svg";
+import mas from "../../img/mas.svg";
+import { useNavigate } from "react-router-dom";
+import MessageOne from "../MessageOne";
 
 
 
 const ChatPage=()=>{
+    const navigate = useNavigate();
     return <>
         <div className={classes.block_brown}>
             <div className={classes.top}>
-                <img src={arr} alt="" />
+                <img src={arr} alt="" onClick={() => navigate(-1)}/>
                 <img src="" alt="" className={classes.img_o} />
                 <h5>Name</h5>
             </div>
             <div className={classes.line} />
             <div className={classes.chat}>
-                <div className={classes.left}>
-                    <h6>Какое-то сообщение, о чем-то</h6>
-                    <h6 className={classes.time}>12:05</h6>
-                </div>
-                <div className={classes.right}>
-                    <h6 className={classes.white}>Какое-то сообщение, о чем-то</h6>
-                    <h6 className={classes.time_white}>12:05</h6>
-                </div>
+                <MessageOne />
+                <MessageOne type='my'/>
+            </div>
+            <div className={classes.input} >
+                <input type="text" className={classes.string}/>
+                <img src={mas} alt="" className={classes.mas} />
             </div>
         </div>
     </>

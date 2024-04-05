@@ -80,3 +80,23 @@
     flex-direction: column;
     gap: 10px;
 }
+
+.string {
+    height: 40px;
+    width: 100%;
+    background-color: #B7A18C;
+    border: solid #CFC7BA 2px;
+    padding: 4px;
+    border-radius: 20px;
+}
+
+.mas {
+    margin-left: 30px;
+    margin-right: 20px;
+}
+
+.input {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}

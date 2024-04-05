@@ -10,6 +10,7 @@ import CityController from './controllers/CityController.js'
 import ActivitiesController from './controllers/ActivitiesController.js'
 import SearchController from './controllers/SearchController.js'
 import ServiceController from './controllers/ServiceController.js'
+import ChatController from './controllers/ChatController.js'
 
 
 const router = new Router()
@@ -51,6 +52,11 @@ router.post('/likes', LikeController.create)
 router.get('/likes', LikeController.getAll)
 router.get('/likes/:id', LikeController.getAllById)
 router.post('/dislikes', LikeController.delete)
+
+// CHAT
+router.post('/chats', ChatController.create)
+router.get('/chats', ChatController.getAll)
+router.get('/chats/:id', ChatController.getAllById)
 
 // GENDER
 router.get('/genders', GenderController.getAll)
