@@ -40,7 +40,8 @@ class ChatController {
         try {
             console.log('gfvyksrdgfviysgvfigf');
             const chat = await ChatServise.getAllChats(req.params.id);
-            return res.json(chat);
+         
+                return res.json(chat);
         } catch (e) {
             console.log(e);
             res.status(500).json(e)

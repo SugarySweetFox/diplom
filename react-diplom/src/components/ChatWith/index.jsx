@@ -1,6 +1,6 @@
 import  classes from "./index.module.css";
 
-function ChatWith({photo, name, time}) {
+function ChatWith({photo, name, time, message}) {
     return ( <>
                 <div className={classes.block}>
                     <div className={classes.block_top}>
@@ -10,7 +10,7 @@ function ChatWith({photo, name, time}) {
                                 <h5>{name}</h5>
                                 <h6>12:04</h6>
                             </div>
-                            <h6>Какое-то сообщение, о чем-то</h6>
+                            <h6>{message}</h6>
                         </div>
                     </div>
                     <div className={classes.line}>

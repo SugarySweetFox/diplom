@@ -1,4 +1,4 @@
-import { Chat, ChatMembers, User} from "../models.js";
+import { Chat, ChatMembers, Message, User} from "../models.js";
 
 
 class ChatService {
@@ -26,6 +26,7 @@ class ChatService {
     }
 
     async getAllChats(id) {
+        
         const chatMembers = await ChatMembers.findAll({raw: true, where: {
             userId: id
         }});
@@ -34,15 +35,30 @@ class ChatService {
             chatsId.push(element.chatId)
         });
         const allchats = await ChatMembers.findAll({raw: true, include: { all: true }})
-        let chats = []
+       
+        let chats = [];
+       
+
         allchats.forEach(element => {
             chatsId.forEach(chatid => {
                 if (element.chatId === chatid && element.userId != id) {
-                    chats.push(element)
+                    Message.findAll({raw: true, where: {
+                        chat_id: chatid
+                    }}).then((message) => {
+                        let el = element;
+                        el.message = message[message.length-1];
+                        
+                        chats.push(el)
+                    })
                 }
             })
+           
         })
         return chats;
+       //TODO доделать через контроллер а то не работает
+       
+        
+
     }
 
     

@@ -30,8 +30,8 @@ const MessagePage=()=>{
             <h3 className={classes.center}>Мои сообщения</h3>
             <div className={classes.message}>
                 {
-                    allChats.map(element => {
-                        return <ChatWith name={element['user.name']} photo={element['user.photo']}/>
+                    allChats && allChats.map(element => {
+                        return <ChatWith message={element.message.content} name={element['user.name']} photo={element['user.photo']}/>
                     })
                 }
                 {/* <ChatWith name={user.name} photo={user.photo} />
