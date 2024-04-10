@@ -412,6 +412,8 @@ Work.belongsTo(User, {
 
 User.belongsToMany(Chat, {through: ChatMembers});
 Chat.belongsToMany(User, {through: ChatMembers});
+ChatMembers.belongsTo(User);
+ChatMembers.belongsTo(Chat);
 
 
 

@@ -1,6 +1,6 @@
 import  classes from "./index.module.css";
 
-function ChatWith() {
+function ChatWith({photo, name, time}) {
     return ( <>
                 <div className={classes.block}>
                     <div className={classes.block_top}>

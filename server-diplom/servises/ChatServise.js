@@ -1,4 +1,4 @@
-import { Chat} from "../models.js";
+import { Chat, ChatMembers, User} from "../models.js";
 
 
 class ChatService {
@@ -22,6 +22,26 @@ class ChatService {
             id: id
 
         }});
+        return chats;
+    }
+
+    async getAllChats(id) {
+        const chatMembers = await ChatMembers.findAll({raw: true, where: {
+            userId: id
+        }});
+        let chatsId = []
+        chatMembers.forEach(element => {
+            chatsId.push(element.chatId)
+        });
+        const allchats = await ChatMembers.findAll({raw: true, include: { all: true }})
+        let chats = []
+        allchats.forEach(element => {
+            chatsId.forEach(chatid => {
+                if (element.chatId === chatid && element.userId != id) {
+                    chats.push(element)
+                }
+            })
+        })
         return chats;
     }
 

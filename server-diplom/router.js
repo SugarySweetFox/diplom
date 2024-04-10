@@ -56,6 +56,7 @@ router.post('/dislikes', LikeController.delete)
 // CHAT
 router.post('/chats', ChatController.create)
 router.get('/chats', ChatController.getAll)
+router.get('/chats-list/:id', ChatController.getAllChats)
 router.get('/chats/:id', ChatController.getAllById)
 
 // GENDER
