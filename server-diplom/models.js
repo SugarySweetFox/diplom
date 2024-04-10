@@ -392,7 +392,7 @@ Message.belongsTo(User, {
     targetKey: 'id',
     onDelete: 'cascade'
 });
-Message.belongsTo(Post, {
+Message.belongsTo(Chat, {
     foreignKey: 'chat_id',
     targetKey: 'id',
     onDelete: 'cascade'

@@ -4,10 +4,10 @@ function ChatWith({photo, name, time}) {
     return ( <>
                 <div className={classes.block}>
                     <div className={classes.block_top}>
-                        <img src="" alt="" className={classes.img_o} />
+                        <img src={photo} alt="" className={classes.img_o} />
                         <div className={classes.block_text}>
                             <div className={classes.top_text}>
-                                <h5>Имя</h5>
+                                <h5>{name}</h5>
                                 <h6>12:04</h6>
                             </div>
                             <h6>Какое-то сообщение, о чем-то</h6>
