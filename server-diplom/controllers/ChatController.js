@@ -38,10 +38,9 @@ class ChatController {
 
     async getAllChats(req, res) {
         try {
-            console.log('gfvyksrdgfviysgvfigf');
-            const chat = await ChatServise.getAllChats(req.params.id);
-         
-                return res.json(chat);
+            const chats = await ChatServise.getAllChats(req.params.id);
+            const chatsWithUser = await ChatServise.getAllChatsWithUser(chats);
+            return res.json(chatsWithUser);
         } catch (e) {
             console.log(e);
             res.status(500).json(e)

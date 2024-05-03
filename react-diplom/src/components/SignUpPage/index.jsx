@@ -89,7 +89,7 @@ const SignUpPage=()=>{
 
     return     <>{isActive&&<PopUp message={popUpMessage} setIsActive={setIsActive}/>}<div className={classes.block_brown}>
         {isLoading && <Preloader/>}
-        <h3>Вход</h3>
+        <h3>Регистрация</h3>
                 
             <div className={classes.inputs}>
                 <div className={classes.input}>
