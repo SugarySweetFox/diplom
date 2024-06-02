@@ -21,8 +21,8 @@ const PortfolioPage=()=>{
 
     const [works, setWorks] = useState([
         {
-            picture: like,
-            favorite: true
+            picture: like
+            
         }
     ]);
 

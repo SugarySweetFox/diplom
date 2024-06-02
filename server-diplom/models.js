@@ -63,10 +63,10 @@ const Work = sequelize.define("work", {
     //     type: Sequelize.INTEGER,
     //     allowNull: true
     // },
-    favorite: {
-        type: Sequelize.BOOLEAN,
-        allowNull: true
-    },
+    // favorite: {
+    //     type: Sequelize.BOOLEAN,
+    //     allowNull: true
+    // },
     user_id: {
         type: Sequelize.INTEGER,
         allowNull: false
