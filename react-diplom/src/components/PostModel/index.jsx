@@ -64,10 +64,7 @@ const PostModels=({refreshPosts, name, city, search, age, about, user, picture, 
                                 <h5>О себе:</h5>
                                 <h4 className={classes.left}>{about}</h4>
                             </div>
-                            <div className={classes.text_post}>
-                                <h5>Стоимтость:</h5>
-                                <h5 className={classes.left}>{count}</h5>
-                            </div>
+                           
                         </div>
                     </div>
                     {isAuthor || isAdmin() ? <img onClick={() => {delitee(post_id)}} src={delite} className={classes.img_like}/>  : false}

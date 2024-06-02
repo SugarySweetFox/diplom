@@ -207,10 +207,7 @@ const FormPage=({setIsActive, userId,  refreshPosts})=>{
                     <p>О себе:</p>
                     <input type="text" placeholder="Название" value={about} onChange={(e)=>{setAbout(e.target.value)}} /> 
                 </div>   
-                <div className={classes.input}>
-                    <p>Cтоимость:</p>
-                    <input type="text" placeholder="Название" value={count} onChange={(e)=>{setAbout(e.target.value)}} /> 
-                </div>              
+                           
                 </div>
             </div>
 

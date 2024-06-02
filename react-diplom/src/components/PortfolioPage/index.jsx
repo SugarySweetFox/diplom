@@ -23,18 +23,6 @@ const PortfolioPage=()=>{
         {
             picture: like,
             favorite: true
-        },
-        {
-            picture: like,
-            favorite: false
-        },
-        {
-            picture: like,
-            favorite: false
-        },
-        {
-            picture: like,
-            favorite: true
         }
     ]);
 
