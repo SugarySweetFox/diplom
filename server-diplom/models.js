@@ -2,8 +2,6 @@ import Sequelize from 'sequelize'
 import {sequelize} from './db.js'
 
 
-
-
 const Chat = sequelize.define("chat", {
     id: {
         type: Sequelize.INTEGER,
@@ -59,14 +57,6 @@ const Work = sequelize.define("work", {
         type: Sequelize.STRING,
         allowNull: false
     },
-    // portfolio_id: {
-    //     type: Sequelize.INTEGER,
-    //     allowNull: true
-    // },
-    // favorite: {
-    //     type: Sequelize.BOOLEAN,
-    //     allowNull: true
-    // },
     user_id: {
         type: Sequelize.INTEGER,
         allowNull: false
@@ -74,27 +64,6 @@ const Work = sequelize.define("work", {
 
 });
 
-
-
-// const PortfolioUser = sequelize.define("portfolioUser", {
-//     id: {
-//         type: Sequelize.INTEGER,
-//         autoIncrement: true,
-//         primaryKey: true,
-//         allowNulll: false
-//     }
-// });
-
-// const Portfolio = sequelize.define("portfolio", {
-//     id: {
-//         type: Sequelize.INTEGER,
-//         autoIncrement: true,
-//         primaryKey: true,
-//         allowNulll: false
-//     }
-// });
-// Portfolio.hasMany(Work);
-// Portfolio.hasMany(PortfolioUser);
 
 const User = sequelize.define("user", {
     id: {
@@ -140,8 +109,6 @@ const User = sequelize.define("user", {
         allowNull: false
     }
 });
-// User.hasMany(Post);
-// User.hasMany(PortfolioUser);
 
 const Type = sequelize.define("type", {
     id: {
@@ -155,7 +122,6 @@ const Type = sequelize.define("type", {
         allowNull: false
     }
 });
-// Type.hasMany(Post);
 
 const Role = sequelize.define("role", {
     id: {
@@ -169,7 +135,6 @@ const Role = sequelize.define("role", {
         allowNull: false
     }
 });
-// Role.hasMany(User);
 
 const Gender = sequelize.define("gender", {
     id: {
@@ -183,7 +148,6 @@ const Gender = sequelize.define("gender", {
         allowNull: false
     }
 });
-// Gender.hasMany(User);
 
 const City = sequelize.define("city", {
     id: {
@@ -197,8 +161,6 @@ const City = sequelize.define("city", {
         allowNull: false
     }
 });
-// City.hasMany(User);
-// City.hasMany(Post);
 
 const Activities = sequelize.define("activities", {
     id: {
@@ -238,8 +200,6 @@ const Service = sequelize.define("service", {
         allowNull: false
     }
 });
-// Activities.hasMany(User);
-// Activities.hasMany(Post);
 
 const Like = sequelize.define("like", {
     id: {
@@ -257,12 +217,6 @@ const Like = sequelize.define("like", {
         allowNull: true
     }
 });
-// User.belongsToMany(Post, {through: Like});
-// Post.belongsToMany(User, {through: Like});
-
-
-
-
 
 const Post = sequelize.define("post", {
     id: {
