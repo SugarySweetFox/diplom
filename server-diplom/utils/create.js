@@ -2,6 +2,7 @@ import { Post, User, Work, Role, Like, Gender, City, Activities, Type, Search, S
 
 export default function createInfo(){
     City.create({name: "Санкт-Петербург"});
+    City.create({name: "Нижний-Новгород"});
     City.create({name: "Москва"});
     Gender.create({name: "Мужчина"});
     Gender.create({name: "Женщина"});
@@ -12,6 +13,7 @@ export default function createInfo(){
     Search.create({name: "Фотограф"});
     Search.create({name: "Бьюти мастер"});
     Service.create({name: "Мастер бровист"});
+    Service.create({name: "Косметолог"});
     Service.create({name: "Мастер маникюра"});
     Role.create({name:"Админ"});
     Type.create({name: "Фотосессия"});
